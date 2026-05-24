@@ -1,9 +1,120 @@
 import data from "./stores/store_data.json";
 import * as _ from "lodash";
-export const getSession = async () => {
-  // const res = await fetch("//jsonplaceholder.typicode.com/users");
-  // console.log(data["data"]);
-  const input_data = data["data"];
+
+const SUPPORTED_LOCALES = ["en", "es"];
+const DEFAULT_LOCALE = "en";
+const LOCALE_STORAGE_KEY = "ric_cm_locale";
+
+function normalizeLocale(locale) {
+  return SUPPORTED_LOCALES.includes(locale) ? locale : DEFAULT_LOCALE;
+}
+
+export function getSupportedLocales() {
+  return [...SUPPORTED_LOCALES];
+}
+
+export function getStoredLocale() {
+  try {
+    const locale = localStorage.getItem(LOCALE_STORAGE_KEY);
+    return normalizeLocale(locale);
+  } catch (_err) {
+    return DEFAULT_LOCALE;
+  }
+}
+
+export function setStoredLocale(locale) {
+  const normalized = normalizeLocale(locale);
+  try {
+    localStorage.setItem(LOCALE_STORAGE_KEY, normalized);
+  } catch (_err) {
+    // ignore persistence errors
+  }
+  return normalized;
+}
+
+function localized(multilingualValue, locale) {
+  if (multilingualValue == null) return multilingualValue;
+  if (typeof multilingualValue !== "object" || Array.isArray(multilingualValue)) {
+    return multilingualValue;
+  }
+  if (Object.prototype.hasOwnProperty.call(multilingualValue, "en") || Object.prototype.hasOwnProperty.call(multilingualValue, "es")) {
+    return multilingualValue[locale] ?? multilingualValue[DEFAULT_LOCALE] ?? "";
+  }
+  return multilingualValue;
+}
+
+function localizeInputData(rawInputData, locale) {
+  const inputData = _.cloneDeep(rawInputData);
+
+  inputData.entities = (inputData.entities || []).map((entity) => {
+    const localizedEntity = localized(entity, locale);
+    return {
+      ID: entity.ID,
+      Name: localizedEntity.Name || "",
+      Definition: localizedEntity.Definition || "",
+      "Scope Notes": localizedEntity["Scope Notes"] || "",
+      Examples: localizedEntity.Examples || "",
+      Comments: localizedEntity.Comments || "",
+    };
+  });
+
+  inputData.attributes = (inputData.attributes || []).map((attribute) => {
+    const localizedAttribute = localized(attribute, locale);
+    return {
+      ID: attribute.ID,
+      Name: localizedAttribute.Name || "",
+      Definition: localizedAttribute.Definition || "",
+      Domain: localizedAttribute.Domain || [],
+      Specifications: localizedAttribute.Specifications || "",
+      Extensibility: localizedAttribute.Extensibility || "",
+      Repeatability: localizedAttribute.Repeatability || "",
+      "Value schema": localizedAttribute["Value schema"] || [],
+      Scope: localizedAttribute.Scope || "",
+      Examples: localizedAttribute.Examples || "",
+      Example: localizedAttribute.Example || "",
+    };
+  });
+
+  inputData.relations = (inputData.relations || []).map((relation) => ({
+    ...relation,
+    Name: localized(relation.Name, locale) || "",
+  }));
+
+  inputData.relation_descr = (inputData.relation_descr || []).map((relationDescription) => {
+    const localizedRelationDescription = localized(relationDescription, locale);
+    return {
+      ID: relationDescription.ID,
+      Name: localizedRelationDescription.Name || "",
+      Inverse: localizedRelationDescription.Inverse || { ID: "", Name: "" },
+      DomainRange: localizedRelationDescription.DomainRange || { Domain: "", Range: "" },
+      Cardinality: localizedRelationDescription.Cardinality || "",
+      Definition: localizedRelationDescription.Definition || "",
+      "Scope Notes": localizedRelationDescription["Scope Notes"] || "",
+      Examples: localizedRelationDescription.Examples || "",
+      "Broader relations": localizedRelationDescription["Broader relations"] || "",
+      "Narrower relations": localizedRelationDescription["Narrower relations"] || "",
+      "Relation types": localizedRelationDescription["Relation types"] || "",
+    };
+  });
+
+  inputData.hierarchy = (inputData.hierarchy || []).map((entry) => {
+    const parentEntity = _.find(inputData.entities, { ID: entry["Parent ID"] });
+    const childEntity = _.find(inputData.entities, { ID: entry["Child ID"] });
+    return {
+      ...entry,
+      "Parent Name": parentEntity ? parentEntity.Name : null,
+      "Child Name": childEntity ? childEntity.Name : null,
+    };
+  });
+
+  return inputData;
+}
+
+export const getSession = async (locale = DEFAULT_LOCALE) => {
+  const selectedLocale = normalizeLocale(locale);
+  const rawInputData = data["data"];
+  const input_data = localizeInputData(rawInputData, selectedLocale);
+
   let ent_list = _.uniq(
     _.map(
       _.filter(input_data.hierarchy, (o) => {
@@ -184,6 +295,7 @@ export const getSession = async () => {
       let ent_tmp = _.find(input_data["entities"], {
         Name: attributes[i]["Domain"][j],
       });
+      if (!ent_tmp) continue;
       input_data["entities"][
         _.findIndex(input_data["entities"], {
           Name: attributes[i]["Domain"][j],
@@ -304,10 +416,10 @@ export const getSession = async () => {
   let levels = [
     {
       code: "RiC-E01",
-      name: "Thing",
+      name: _.find(input_data.entities, { ID: "RiC-E01" })?.Name || "Thing",
       children: _.sortBy(
         _.map(_.filter(tmp_h, { "Parent ID": "RiC-E01" }), (o) => {
-          return { code: o["Child ID"], name: o["Child Name"] };
+          return { code: o["Child ID"], name: _.find(input_data.entities, { ID: o["Child ID"] })?.Name || "" };
         }),
         ["code"]
       ),
@@ -324,7 +436,7 @@ export const getSession = async () => {
                 "Parent ID": levels[0]["children"][l2].code,
               }),
               (o) => {
-                return { code: o["Child ID"], name: o["Child Name"] };
+                return { code: o["Child ID"], name: _.find(input_data.entities, { ID: o["Child ID"] })?.Name || "" };
               }
             ),
             ["code"]
@@ -341,7 +453,7 @@ export const getSession = async () => {
                   "Parent ID": levels[0]["children"][l2]["children"][l3].code,
                 }),
                 (o) => {
-                  return { code: o["Child ID"], name: o["Child Name"] };
+                  return { code: o["Child ID"], name: _.find(input_data.entities, { ID: o["Child ID"] })?.Name || "" };
                 }
               ),
               ["code"]
@@ -350,6 +462,5 @@ export const getSession = async () => {
     }
   }
   input_data["ent_hierarchy"] = levels;
-  console.log(input_data);
   return input_data;
 };

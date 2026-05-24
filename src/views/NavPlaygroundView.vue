@@ -3,12 +3,14 @@ import { computed, nextTick, ref, watch } from "vue";
 import { defineConfigs } from "v-network-graph";
 import vSelect from "vue-select";
 import { useMainStore } from "@/stores/store";
+import { useLabels } from "@/composables/useLabels";
 import EntityCardView from "@/views/EntityCardView.vue";
 import RelationCardView from "@/views/RelationCardView.vue";
 import AttributeCardView from "@/views/AttributeCardView.vue";
 import RelationAttributeCardView from "@/views/RelationAttributeCardView.vue";
 
 const store = useMainStore();
+const { t } = useLabels();
 
 const playgroundNodes = ref({});
 const playgroundEdges = ref({});
@@ -18,7 +20,7 @@ const nodeCounter = ref(1);
 const edgeCounter = ref(1);
 
 const selectedEntityId = ref("");
-const textNodeLabel = ref("Text node");
+const textNodeLabel = ref("");
 const selectedRelationId = ref("");
 const selectedAttributeId = ref("");
 const relationSourceNodeId = ref("");
@@ -288,7 +290,7 @@ async function startInlineTextEdit(nodeId) {
   if (!nodeData || nodeData.nodeType !== "text") return;
 
   editingTextNodeId.value = nodeId;
-  editingTextValue.value = nodeData.displayName || nodeData.name || "Text node";
+  editingTextValue.value = nodeData.displayName || nodeData.name || t("playground.textNodeDefault");
   await nextTick();
   setEditingOverlayPosition(nodeId);
   await nextTick();
@@ -299,7 +301,7 @@ async function startInlineTextEdit(nodeId) {
 function saveInlineTextEdit() {
   const nodeId = editingTextNodeId.value;
   if (!nodeId || !playgroundNodes.value[nodeId]) return;
-  const cleaned = editingTextValue.value.trim() || "Text node";
+  const cleaned = editingTextValue.value.trim() || t("playground.textNodeDefault");
   playgroundNodes.value = {
     ...playgroundNodes.value,
     [nodeId]: {
@@ -542,7 +544,7 @@ const relationTargetNodeOptions = computed(() =>
 const textNodeOptions = computed(() =>
   Object.entries(playgroundNodes.value)
     .filter(([, node]) => node.nodeType === "text")
-    .map(([id]) => ({ value: id, label: `${id}: Text Node` }))
+    .map(([id]) => ({ value: id, label: `${id}: ${t("playground.textNodeShort")}` }))
     .sort((a, b) => a.value.localeCompare(b.value))
 );
 
@@ -565,7 +567,7 @@ const selectedEdgeList = computed(() =>
 );
 
 function selectedNodeListLabel(node) {
-  if (node.nodeType === "text") return `${node.id}: Text Node`;
+  if (node.nodeType === "text") return `${node.id}: ${t("playground.textNodeShort")}`;
   return `${node.id}: ${node.displayName || node.name}`;
 }
 
@@ -608,7 +610,7 @@ function addEntityNode() {
 }
 
 function addTextNode() {
-  const displayName = textNodeLabel.value?.trim() || "Text node";
+  const displayName = textNodeLabel.value?.trim() || t("playground.textNodeDefault");
   const id = `n${nodeCounter.value++}`;
   playgroundNodes.value = {
     ...playgroundNodes.value,
@@ -854,7 +856,7 @@ const graphConfigs = defineConfigs({
         <div class="control-group">
           <label class="form-label">Add Text Node</label>
           <div class="control-row">
-            <input class="form-control form-control-sm" v-model="textNodeLabel" placeholder="Text node label" />
+            <input class="form-control form-control-sm" v-model="textNodeLabel" :placeholder="t('playground.textNodeLabel')" />
             <button class="btn btn-sm btn-outline-primary" @click="addTextNode">Add</button>
           </div>
         </div>

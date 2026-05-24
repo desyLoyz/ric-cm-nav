@@ -28,3 +28,4 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+src/stores/store_data_bk.json

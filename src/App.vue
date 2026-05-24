@@ -2,10 +2,13 @@
 import { computed } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
 import { Network } from 'lucide-vue-next'
-// import HelloWorld from './components/HelloWorld.vue'
+import { useMainStore } from '@/stores/store'
+import { useLabels } from '@/composables/useLabels'
 
 const route = useRoute()
 const router = useRouter()
+const store = useMainStore()
+const { t, localeOptions } = useLabels()
 
 const cardRouteToListRoute = {
   '/entitycard': '/entities',
@@ -17,10 +20,10 @@ const cardRouteToListRoute = {
 const isCardRoute = computed(() => Object.prototype.hasOwnProperty.call(cardRouteToListRoute, route.path))
 
 const cardRouteTitle = computed(() => {
-  if (route.path === '/entitycard') return 'Entity Card'
-  if (route.path === '/attributecard') return 'Attribute Card'
-  if (route.path === '/relationcard') return 'Relation Card'
-  if (route.path === '/relationattributecard') return 'Relation Attribute Card'
+  if (route.path === '/entitycard') return t('cards.entity')
+  if (route.path === '/attributecard') return t('cards.attribute')
+  if (route.path === '/relationcard') return t('cards.relation')
+  if (route.path === '/relationattributecard') return t('cards.relationAttribute')
   return 'Card'
 })
 
@@ -44,6 +47,10 @@ function isSectionActive(section) {
   if (section === 'modeling-playground') return path === '/modeling-playground' || path === '/nav-playground'
   return false
 }
+
+function onLocaleChange(event) {
+  store.setLocale(event.target.value)
+}
 </script>
 
 <template>
@@ -54,45 +61,49 @@ function isSectionActive(section) {
           <span class="app-icon-wrap">
             <Network class="app-icon" :size="18" :stroke-width="2.1" />
           </span>
-          <span>RiC-CM NavTool</span>
+          <span>{{ t('appTitle') }}</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarNav" aria-expanded="false" :aria-label="t('common.close')">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <RouterLink class="nav-link" :class="{ 'nav-link-active': isSectionActive('entities') }" to="/entities">
-                Entities
+                {{ t('nav.entities') }}
               </RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :class="{ 'nav-link-active': isSectionActive('attributes') }"
                 to="/attributes">
-                Attributes
+                {{ t('nav.attributes') }}
               </RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :class="{ 'nav-link-active': isSectionActive('relations') }"
                 to="/relations">
-                Relations
+                {{ t('nav.relations') }}
               </RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :class="{ 'nav-link-active': isSectionActive('relation-attributes') }"
                 to="/relation-attributes">
-                Relation Attributes
+                {{ t('nav.relationAttributes') }}
               </RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :class="{ 'nav-link-active': isSectionActive('modeling-playground') }"
                 to="/modeling-playground">
-                Modeling Playground
+                {{ t('nav.modelingPlayground') }}
               </RouterLink>
             </li>
           </ul>
-          <div class="ms-lg-auto mt-2 mt-lg-0">
+          <div class="ms-lg-auto mt-2 mt-lg-0 d-flex align-items-center gap-2">
+            <label for="locale" class="small text-muted mb-0">{{ t('nav.language') }}</label>
+            <select id="locale" class="form-select form-select-sm" :value="store.locale" @change="onLocaleChange">
+              <option v-for="opt in localeOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+            </select>
             <button type="button" class="btn btn-outline-secondary btn-sm d-flex align-items-center"
               data-bs-toggle="modal" data-bs-target="#aboutAppModal">
               <i class="bi bi-info-circle"></i>
@@ -106,22 +117,20 @@ function isSectionActive(section) {
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="aboutAppModalLabel">About RiC-CM NavTool</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h1 class="modal-title fs-5" id="aboutAppModalLabel">{{ t('about.title') }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" :aria-label="t('common.close')"></button>
           </div>
           <div class="modal-body">
-            <p class="mb-2">
-              RiC-CM NavTool helps browse RiC-CM entities, attributes, relations, and relation attributes.
-            </p>
+            <p class="mb-2">{{ t('about.description') }}</p>
             <p class="mb-0">
-              This app is built based on <strong>RiC-CM 1.0</strong>
+              {{ t('about.basedOn') }} <strong>RiC-CM 1.0</strong>
               (<a href="https://www.ica.org/ica-network/expert-groups/egad/records-in-contexts-conceptual-model/"
                 target="_blank" rel="noopener noreferrer">
                 Records in Contexts Conceptual Model
               </a>).
             </p>
             <p class="mb-0 mt-3 creator-line">
-              Creator:
+              {{ t('about.creator') }}:
               <a href="https://ilam.ionio.gr/en/staff/764-damigos/" target="_blank" rel="noopener noreferrer">
                 Matthew Damigos
               </a>,
@@ -133,14 +142,14 @@ function isSectionActive(section) {
               </a>.
             </p>
             <p class="mb-0 mt-2 creator-line">
-              License:
+              {{ t('about.license') }}:
               <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
                 CC-BY-4.0
               </a>.
             </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">{{ t('common.close') }}</button>
           </div>
         </div>
       </div>
@@ -151,7 +160,7 @@ function isSectionActive(section) {
         <div v-if="isCardRoute" class="card-popup-wrap" role="dialog" aria-modal="true">
           <div class="card-popup-header">
             <h5 class="mb-0">{{ cardRouteTitle }}</h5>
-            <button type="button" class="btn-close" aria-label="Close" @click="closeCardPopup"></button>
+            <button type="button" class="btn-close" :aria-label="t('common.close')" @click="closeCardPopup"></button>
           </div>
           <div class="card-popup-body">
             <component :is="Component" />

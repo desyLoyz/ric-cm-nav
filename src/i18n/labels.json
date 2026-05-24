@@ -1,0 +1,116 @@
+{
+  "en": {
+    "appTitle": "RiC-CM NavTool",
+    "nav": {
+      "entities": "Entities",
+      "attributes": "Attributes",
+      "relations": "Relations",
+      "relationAttributes": "Relation Attributes",
+      "modelingPlayground": "Modeling Playground",
+      "language": "Language"
+    },
+    "common": {
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "definition": "Definition",
+      "scopeNotes": "Scope Notes",
+      "scope": "Scope",
+      "examples": "Examples",
+      "comments": "Comments",
+      "specifications": "Specifications",
+      "repeatability": "Repeatability",
+      "extensibility": "Extensibility",
+      "valueSchema": "Value Schema",
+      "domain": "Domain",
+      "range": "Range",
+      "close": "Close",
+      "searchCode": "Search Code",
+      "searchName": "Search Name",
+      "searchDescription": "Search Description"
+    },
+    "about": {
+      "title": "About RiC-CM NavTool",
+      "description": "RiC-CM NavTool helps browse RiC-CM entities, attributes, relations, and relation attributes.",
+      "basedOn": "This app is built based on",
+      "creator": "Creator",
+      "license": "License"
+    },
+    "cards": {
+      "entity": "Entity Card",
+      "attribute": "Attribute Card",
+      "relation": "Relation Card",
+      "relationAttribute": "Relation Attribute Card"
+    },
+    "entitiesView": { "title": "Entities", "hierarchy": "Hierarchy of Entities" },
+    "attributesView": { "title": "Attributes", "searchEntities": "Search Entities" },
+    "relationsView": { "title": "Relations", "searchDomain": "Search Domain", "searchRange": "Search Range" },
+    "relationAttributesView": { "title": "Relation Attributes", "searchValueSchema": "Search Value Schema" },
+    "entityCard": { "attributes": "Attributes", "relations": "Relations", "descendants": "Descendants", "asType": "As {type}", "relationTableToggle": "Relation table toggle", "searchType": "Search {type}" },
+    "attributeCard": { "domainEntities": "Domain/Entities" },
+    "relationCard": { "cardinality": "Cardinality", "broaderRelations": "Broader relations", "narrowerRelations": "Narrower relations", "inverse": "Inverse" },
+    "playground": {
+      "title": "Modeling Playground",
+      "textNodeDefault": "Text node",
+      "textNodeShort": "Text Node",
+      "textNodeLabel": "Text node label"
+    }
+  },
+  "es": {
+    "appTitle": "RiC-CM NavTool",
+    "nav": {
+      "entities": "Entidades",
+      "attributes": "Atributos",
+      "relations": "Relaciones",
+      "relationAttributes": "Atributos de relación",
+      "modelingPlayground": "Entorno de modelado",
+      "language": "Idioma"
+    },
+    "common": {
+      "code": "Código",
+      "name": "Nombre",
+      "description": "Descripción",
+      "definition": "Definición",
+      "scopeNotes": "Notas de alcance",
+      "scope": "Alcance",
+      "examples": "Ejemplos",
+      "comments": "Comentarios",
+      "specifications": "Especificaciones",
+      "repeatability": "Repetibilidad",
+      "extensibility": "Extensibilidad",
+      "valueSchema": "Esquema de valor",
+      "domain": "Dominio",
+      "range": "Rango",
+      "close": "Cerrar",
+      "searchCode": "Buscar código",
+      "searchName": "Buscar nombre",
+      "searchDescription": "Buscar descripción"
+    },
+    "about": {
+      "title": "Acerca de RiC-CM NavTool",
+      "description": "RiC-CM NavTool ayuda a explorar entidades, atributos, relaciones y atributos de relación de RiC-CM.",
+      "basedOn": "Esta aplicación está construida sobre",
+      "creator": "Creador",
+      "license": "Licencia"
+    },
+    "cards": {
+      "entity": "Ficha de entidad",
+      "attribute": "Ficha de atributo",
+      "relation": "Ficha de relación",
+      "relationAttribute": "Ficha de atributo de relación"
+    },
+    "entitiesView": { "title": "Entidades", "hierarchy": "Jerarquía de entidades" },
+    "attributesView": { "title": "Atributos", "searchEntities": "Buscar entidades" },
+    "relationsView": { "title": "Relaciones", "searchDomain": "Buscar dominio", "searchRange": "Buscar rango" },
+    "relationAttributesView": { "title": "Atributos de relación", "searchValueSchema": "Buscar esquema de valor" },
+    "entityCard": { "attributes": "Atributos", "relations": "Relaciones", "descendants": "Descendientes", "asType": "Como {type}", "relationTableToggle": "Alternar tabla de relaciones", "searchType": "Buscar {type}" },
+    "attributeCard": { "domainEntities": "Dominio/Entidades" },
+    "relationCard": { "cardinality": "Cardinalidad", "broaderRelations": "Relaciones más amplias", "narrowerRelations": "Relaciones más específicas", "inverse": "Inversa" },
+    "playground": {
+      "title": "Entorno de modelado",
+      "textNodeDefault": "Nodo de texto",
+      "textNodeShort": "Nodo de texto",
+      "textNodeLabel": "Etiqueta del nodo de texto"
+    }
+  }
+}

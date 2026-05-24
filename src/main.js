@@ -12,11 +12,11 @@ import "bootstrap";
 import { createStore } from "./stores/store";
 import * as DataService from "./data_service";
 
-DataService.getSession().then((sessionData) => {
+const currentLocale = DataService.getStoredLocale();
+DataService.getSession(currentLocale).then((sessionData) => {
   const app = createApp(App);
-  app.use(createStore(sessionData));
+  app.use(createStore(sessionData, currentLocale));
   app.use(router);
   app.use(VNetworkGraph);
-
   app.mount("#app");
 });

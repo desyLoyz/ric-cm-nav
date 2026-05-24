@@ -1,18 +1,21 @@
-import { ref, computed } from "vue";
 import { createPinia, defineStore } from "pinia";
 import * as _ from "lodash";
 import router from "@/router";
+import * as DataService from "@/data_service";
 
 let initData = null;
+let initLocale = "en";
 
-export const createStore = (initStoreData) => {
+export const createStore = (initStoreData, locale = "en") => {
   initData = { ...initStoreData };
+  initLocale = locale;
   return createPinia();
 };
 
 export const useMainStore = defineStore("main", {
   state: () => ({
     data: initData,
+    locale: initLocale,
     selected: {
       entity: "RiC-E01",
       relation: "RiC-R001",
@@ -32,9 +35,7 @@ export const useMainStore = defineStore("main", {
       return _.filter(out, (x) => {
         for (let i in arr_keywords) {
           if (
-            JSON.stringify(
-              _.pick(x, ["ID", "Name", "Definition", "Scope Notes"])
-            )
+            JSON.stringify(_.pick(x, ["ID", "Name", "Definition", "Scope Notes"]))
               .toLowerCase()
               .indexOf(arr_keywords[i].trim()) > -1
           ) {
@@ -47,9 +48,7 @@ export const useMainStore = defineStore("main", {
     getEntityInfo: (state) => {
       let ent_tmp = _.find(state.data.entities, { ID: state.selected.entity });
       let descendants = [];
-      if (
-        _.indexOf(_.keys(state.data.descendants), state.selected.entity) > -1
-      ) {
+      if (_.indexOf(_.keys(state.data.descendants), state.selected.entity) > -1) {
         let tmp_desc = _.orderBy(state.data.descendants[state.selected.entity]);
         for (let k in tmp_desc) {
           descendants.push({
@@ -63,11 +62,7 @@ export const useMainStore = defineStore("main", {
 
       let desc_levels = [];
       let tmp_curr_hierarchy = _.filter(
-        _.orderBy(
-          state.data.levels,
-          ["level1ID", "level2ID", "level3ID", "level4ID"],
-          ["asc", "asc", "asc", "asc"]
-        ),
+        _.orderBy(state.data.levels, ["level1ID", "level2ID", "level3ID", "level4ID"], ["asc", "asc", "asc", "asc"]),
         {
           level1ID: state.selected.entity,
         }
@@ -153,7 +148,7 @@ export const useMainStore = defineStore("main", {
         });
       }
 
-      let out = {
+      return {
         entity: {
           code: state.selected.entity,
           name: ent_tmp["Name"],
@@ -168,8 +163,6 @@ export const useMainStore = defineStore("main", {
           relations: ent_tmp["relations"],
         },
       };
-      console.log(out);
-      return out;
     },
     getAttributes: (state) => {
       let out = state.data.attributes;
@@ -179,6 +172,7 @@ export const useMainStore = defineStore("main", {
           let ent_tmp = _.find(state.data.entities, {
             Name: out[i]["Domain"][j],
           });
+          if (!ent_tmp) continue;
           out[i]["entities"].push({
             code: ent_tmp["ID"],
             name: ent_tmp["Name"],
@@ -189,9 +183,7 @@ export const useMainStore = defineStore("main", {
       let arr_keywords = state.filters.attributes.split(" ");
       return _.filter(out, (x) => {
         for (let i in arr_keywords) {
-          if (
-            JSON.stringify(x).toLowerCase().indexOf(arr_keywords[i].trim()) > -1
-          ) {
+          if (JSON.stringify(x).toLowerCase().indexOf(arr_keywords[i].trim()) > -1) {
             return true;
           }
         }
@@ -221,9 +213,7 @@ export const useMainStore = defineStore("main", {
       let arr_keywords = state.filters.relations.split(" ");
       return _.filter(res, (x) => {
         for (let i in arr_keywords) {
-          if (
-            JSON.stringify(x).toLowerCase().indexOf(arr_keywords[i].trim()) > -1
-          ) {
+          if (JSON.stringify(x).toLowerCase().indexOf(arr_keywords[i].trim()) > -1) {
             return true;
           }
         }
@@ -235,7 +225,6 @@ export const useMainStore = defineStore("main", {
       let relattr_tmp = _.find(_.cloneDeep(state.data.relattributes), {
         ID: state.selected.relattribute,
       });
-
       return {
         relattribute: relattr_tmp,
       };
@@ -267,11 +256,9 @@ export const useMainStore = defineStore("main", {
         "code"
       );
 
-      let out = {
+      return {
         relation: ent_tmp,
       };
-      console.log(out);
-      return out;
     },
     getAttributeInfo: (state) => {
       let attr_tmp = _.find(_.cloneDeep(state.data.attributes), {
@@ -294,18 +281,19 @@ export const useMainStore = defineStore("main", {
       }
       attr_tmp["entities"] = ents;
 
-      let out = {
+      return {
         attribute: attr_tmp,
       };
-      console.log(out);
-      return out;
     },
   },
   actions: {
-    increment() {
-      this.count++;
+    async setLocale(locale) {
+      const normalizedLocale = DataService.setStoredLocale(locale);
+      const newData = await DataService.getSession(normalizedLocale);
+      this.locale = normalizedLocale;
+      this.data = newData;
     },
-    goBack(event) {
+    goBack() {
       router.go(-1);
     },
     selectEntity(entityCode) {
@@ -328,7 +316,6 @@ export const useMainStore = defineStore("main", {
       if (value == null) {
         value = "";
       }
-
       this.filters[tp] = value;
     },
   },
