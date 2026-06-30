@@ -1,21 +1,26 @@
 <script setup>
-import { computed, nextTick, ref, watch } from "vue";
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
+import { storeToRefs } from "pinia";
 import { defineConfigs } from "v-network-graph";
 import vSelect from "vue-select";
 import { useMainStore } from "@/stores/store";
+import { usePlaygroundStore } from "@/stores/playgroundStore";
 import EntityCardView from "@/views/EntityCardView.vue";
 import RelationCardView from "@/views/RelationCardView.vue";
 import AttributeCardView from "@/views/AttributeCardView.vue";
 import RelationAttributeCardView from "@/views/RelationAttributeCardView.vue";
 
 const store = useMainStore();
-
-const playgroundNodes = ref({});
-const playgroundEdges = ref({});
-const playgroundLayouts = ref({ nodes: {} });
-
-const nodeCounter = ref(1);
-const edgeCounter = ref(1);
+const playgroundStore = usePlaygroundStore();
+const {
+  nodes: playgroundNodes,
+  edges: playgroundEdges,
+  layouts: playgroundLayouts,
+  nodeCounter,
+  edgeCounter,
+  canUndo,
+  canRedo,
+} = storeToRefs(playgroundStore);
 
 const selectedEntityId = ref("");
 const textNodeLabel = ref("Text node");
@@ -64,6 +69,36 @@ function isEntityOrDescendant(entityId, baseEntityId) {
 
 function entityIdFromNode(nodeId) {
   return playgroundNodes.value[nodeId]?.entityId || "";
+}
+
+function commitGraphChange() {
+  playgroundStore.recordSnapshot();
+}
+
+function isKeyboardEditableTarget(target) {
+  if (!(target instanceof HTMLElement)) return false;
+  return Boolean(target.closest("input, textarea, select, [contenteditable='true'], .vs__search"));
+}
+
+function handleKeyboardShortcuts(event) {
+  if (!(event.ctrlKey || event.metaKey)) return;
+  if (isKeyboardEditableTarget(event.target)) return;
+
+  const key = event.key.toLowerCase();
+  if (key === "z" && event.shiftKey) {
+    event.preventDefault();
+    playgroundStore.redo();
+    return;
+  }
+  if (key === "z") {
+    event.preventDefault();
+    playgroundStore.undo();
+    return;
+  }
+  if (key === "y") {
+    event.preventDefault();
+    playgroundStore.redo();
+  }
 }
 
 async function ensureGraphVisible() {
@@ -257,6 +292,7 @@ async function importRiccmnav() {
     selectedRelationId.value = "";
     selectedAttributeId.value = "";
     importStatus.value = "File imported successfully.";
+    commitGraphChange();
     await ensureGraphVisible();
   } catch (err) {
     importError.value = `Import failed: ${err?.message || "Invalid .riccmnav file."}`;
@@ -308,6 +344,7 @@ function saveInlineTextEdit() {
       displayName: cleaned,
     },
   };
+  commitGraphChange();
   editingTextNodeId.value = "";
 }
 
@@ -604,6 +641,7 @@ function addEntityNode() {
       },
     },
   };
+  commitGraphChange();
   ensureGraphVisible();
 }
 
@@ -628,6 +666,7 @@ function addTextNode() {
       },
     },
   };
+  commitGraphChange();
   ensureGraphVisible();
 }
 
@@ -648,6 +687,7 @@ function addRelationEdge() {
       edgeType: "relation",
     },
   };
+  commitGraphChange();
   ensureGraphVisible();
 }
 
@@ -673,6 +713,7 @@ function addAttributeEdge() {
       edgeType: "attribute",
     },
   };
+  commitGraphChange();
   ensureGraphVisible();
 }
 
@@ -697,6 +738,7 @@ function removeNode(nodeId) {
   if (attributeTargetNodeId.value === nodeId) attributeTargetNodeId.value = "";
   selectedNodeIds.value = selectedNodeIds.value.filter((id) => id !== nodeId);
   selectedEdgeIds.value = selectedEdgeIds.value.filter((id) => nextEdges[id]);
+  commitGraphChange();
 }
 
 function removeEdge(edgeId) {
@@ -704,12 +746,11 @@ function removeEdge(edgeId) {
   delete nextEdges[edgeId];
   playgroundEdges.value = nextEdges;
   selectedEdgeIds.value = selectedEdgeIds.value.filter((id) => id !== edgeId);
+  commitGraphChange();
 }
 
 function clearGraph() {
-  playgroundNodes.value = {};
-  playgroundEdges.value = {};
-  playgroundLayouts.value = { nodes: {} };
+  playgroundStore.clearCanvas();
   selectedRelationId.value = "";
   selectedAttributeId.value = "";
   relationSourceNodeId.value = "";
@@ -751,9 +792,19 @@ const graphEventHandlers = {
     if (editingTextNodeId.value) setEditingOverlayPosition(editingTextNodeId.value);
   },
   "node:dragend": () => {
+    commitGraphChange();
     if (editingTextNodeId.value) setEditingOverlayPosition(editingTextNodeId.value);
   },
 };
+
+onMounted(() => {
+  playgroundStore.loadFromStorage();
+  window.addEventListener("keydown", handleKeyboardShortcuts);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", handleKeyboardShortcuts);
+});
 
 const graphConfigs = defineConfigs({
   view: {
@@ -913,7 +964,13 @@ const graphConfigs = defineConfigs({
 
         <div class="control-group">
           <div class="action-row">
-            <button class="btn btn-sm btn-outline-danger" @click="clearGraph">Clear Graph</button>
+            <button class="btn btn-sm btn-outline-secondary" :disabled="!canUndo" @click="playgroundStore.undo()">
+              Undo
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" :disabled="!canRedo" @click="playgroundStore.redo()">
+              Redo
+            </button>
+            <button class="btn btn-sm btn-outline-danger" @click="clearGraph">Clear canvas</button>
             <button class="btn btn-sm btn-outline-secondary" @click="openImportModal">Import</button>
             <button class="btn btn-sm btn-outline-secondary" @click="openExportModal">Export</button>
           </div>
