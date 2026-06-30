@@ -529,6 +529,22 @@
           "Scope": "",
           "Examples": "business process [en] action [en] task [en] transaction [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Aktivitätskategorie",
+          "Definition": "Categorization of an activity.",
+          "Domain": [
+            "Activity"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes, for example||\"function/action\" and \"activity domain.\" Making the attribute extensible allows for a faceted approach that enables activity type to be divided into more distinct components, both general and specific. For example, \"monitoring\" can be used in combination with \"election polls\" or \"water resources.\"",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "business process [en] action [en] task [en] transaction [en]",
+          "Example": ""
         }
       },
       {
@@ -605,6 +621,23 @@
           "Scope": "For digital resources, it may be used to indicate the size of storage capacity (disk, tape, film, etc.).||Carrier extent should not be confused with instantiation extent or record resource extent. For a given record resource, the instantiation extent may vary, based on format, density of information on the carrier, etc. For example, a CD with a storage capacity of 700 MB (carrier extent) might hold a record of 1500 words (record resource extent) represented in two versions, one a Word document with an instantiation extent of 3 KB and the other a PDF file with an instantiation extent of 5 KB.",
           "Examples": "1 page [en]||32.5 x 49 cm [piece of parchment] [en]||3 GB [1 USB key] [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Datenträgerumfang",
+          "Definition": "Number of physical units and/or physical dimensions of the carrier of an instantiation.",
+          "Domain": [
+            "Instantiation"
+          ],
+          "Specifications": "In order to manage an instantiation of a record resource it is necessary to note the extent of the carrier as well as that of the instantiation itself. Whether it is necessary to note dimensions, the number of relevant units or both depends on the nature of the carrier and particular business needs.",
+          "Extensibility": "May be extended with any number of specific attributes in order to enable use of controlled values or rule-based values.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Model-based text",
+            "free text"
+          ],
+          "Scope": "For digital resources, it may be used to indicate the size of storage capacity (disk, tape, film, etc.).||Carrier extent should not be confused with instantiation extent or record resource extent. For a given record resource, the instantiation extent may vary, based on format, density of information on the carrier, etc. For example, a CD with a storage capacity of 700 MB (carrier extent) might hold a record of 1500 words (record resource extent) represented in two versions, one a Word document with an instantiation extent of 3 KB and the other a PDF file with an instantiation extent of 5 KB.",
+          "Examples": "1 page [en]||32.5 x 49 cm [piece of parchment] [en]||3 GB [1 USB key] [en]",
+          "Example": ""
         }
       },
       {
@@ -627,6 +660,22 @@
         },
         "es": {
           "Name": "Carrier Type",
+          "Definition": "Categorization of physical material on which information is represented.",
+          "Domain": [
+            "Instantiation"
+          ],
+          "Specifications": "In order to manage an instantiation of a record resource, it is necessary to note the type of carrier on which the record resource is instantiated as its nature will determine the environmental storage conditions and the prerequisites for and possible ways of accessing and using the record resource.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "Carrier type should not be confused with representation type of the instantiation or the content type of a record resource as the form of communication can be independent of the representation or the carrier, for example a map (content type \"cartographic image\") may be represented as a sketch (representation type \"visual\") recorded as a physical document (carrier type \"paper\").",
+          "Examples": "clay tablets [en] papyrus [en] magnetic disk [en] optical disk [en] paper [en] parchment [en] film [en] vinyl disk [en] magnetic tape [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Datenträgerkategorie",
           "Definition": "Categorization of physical material on which information is represented.",
           "Domain": [
             "Instantiation"
@@ -790,6 +839,22 @@
           "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||The attribute should not be confused with the representation type or carrier type attributes of a related instantiation since the form of communication can be independent of the representation or carrier, for example a map (content type \"cartographic image\") may be represented as a sketch (representation type \"visual\") recorded as a physical document (carrier type \"paper\"). It also should not be confused with the documentary form type attribute of a record set, record, or record part, which describes a specific document form (for example a deed of sale).",
           "Examples": "cartographic image [en] notated music [en] recorded spoken word [en]||still image [en] text [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Inhaltskategorie",
+          "Definition": "The fundamental form of communication in which a record resource is expressed.",
+          "Domain": [
+            "Record Resource"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||The attribute should not be confused with the representation type or carrier type attributes of a related instantiation since the form of communication can be independent of the representation or carrier, for example a map (content type \"cartographic image\") may be represented as a sketch (representation type \"visual\") recorded as a physical document (carrier type \"paper\"). It also should not be confused with the documentary form type attribute of a record set, record, or record part, which describes a specific document form (for example a deed of sale).",
+          "Examples": "cartographic image [en] notated music [en] recorded spoken word [en]||still image [en] text [en]",
+          "Example": ""
         }
       },
       {
@@ -825,6 +890,22 @@
           "Scope": "May be based on ISO 6709 Standard representation of geographic point location by coordinates.",
           "Examples": "Latitude50°40ʹ46,461ʺN, Longitude 95°48ʹ26,533ʺW, Height 123,45m [en] [ISO 6709/D]||Latitude 35.89421911, Longitude 139.94637467 [en] [ISO 6709/F]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Koordinaten",
+          "Definition": "Longitudinal and latitudinal information about a place.",
+          "Domain": [
+            "Place"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes, for example to accommodate both longitudinal and latitudinal information according to a reference system.",
+          "Repeatability": "Repeatable to accommodate information deriving from different coordinate systems.",
+          "Value schema": [
+            "Rule-based value"
+          ],
+          "Scope": "May be based on ISO 6709 Standard representation of geographic point location by coordinates.",
+          "Examples": "Latitude50°40ʹ46,461ʺN, Longitude 95°48ʹ26,533ʺW, Height 123,45m [en] [ISO 6709/D]||Latitude 35.89421911, Longitude 139.94637467 [en] [ISO 6709/F]",
+          "Example": ""
         }
       },
       {
@@ -847,6 +928,22 @@
         },
         "es": {
           "Name": "Corporate Body Type",
+          "Definition": "Categorization of a corporate body.",
+          "Domain": [
+            "Corporate Body"
+          ],
+          "Specifications": "Note the type or types of corporate body.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "private [en] public [en] non-governmental organization [en]||political party [en] musical group [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Körperschaftskategorie",
           "Definition": "Categorization of a corporate body.",
           "Domain": [
             "Corporate Body"
@@ -930,6 +1027,22 @@
           "Scope": "",
           "Examples": "Single date [en] Date range [en]||Date set [en]||Year [en]||Century [en]||Geological era [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Datumskategorie",
+          "Definition": "Categorization of a date.",
+          "Domain": [
+            "Date"
+          ],
+          "Specifications": "May be used to categorise a date as a single date, a date range or a date set or subcategories of these broad types. This attribute should not be confused with the date relations defined in RiC-CM to connect a date entity and any other entity (such as RiC-R069 is beginning date of, see 5.2 below).",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "Single date [en] Date range [en]||Date set [en]||Year [en]||Century [en]||Geological era [en]",
+          "Example": ""
         }
       },
       {
@@ -953,6 +1066,23 @@
         },
         "es": {
           "Name": "Demographic Group",
+          "Definition": "Categorization of a person or group based on shared characteristics.",
+          "Domain": [
+            "Person",
+            "Group"
+          ],
+          "Specifications": "",
+          "Extensibility": "Needs to be differentiated into specific attributes in order to be useful.||||Among possible specific demographic attributes are gender, (biological) sex, education, identity, place, ancestry, ethnic/cultural identification, and religion.",
+          "Repeatability": "Relative to the specific kind of demographic category, may or may not be repeatable.",
+          "Value schema": [
+            "Specific demographic attributes should use controlled values."
+          ],
+          "Scope": "Intended to recognize that demographic categorization of persons or groups may be useful in identifying persons or groups associated with records in specific contexts. Demographic categorization presents intellectual and ethical challenges. While it may benefit users of records by providing context and facilitating specific kinds of research, historically it has also been abused, for example, when one demographic",
+          "Examples": "Women [en]||Brazilians [en]||Protestants [en]||Clergy [en]||Peasants [en]||Non-binary persons [en]||Families [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Demographische Gruppe",
           "Definition": "Categorization of a person or group based on shared characteristics.",
           "Domain": [
             "Person",
@@ -1006,6 +1136,24 @@
           "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||Documentary form type plays an important role in determining the type of information a record may comprise, its status of perfection, and its authenticity and reliability.||Documentary form types exist in a specific social and cultural context, and within that context, are subject to change over time.||||Do not confuse with the content type attribute of a record set, record, or record part, which describes the form of communication in which a record or record part is expressed (e.g. an image).",
           "Examples": "deed of gift [en] email [en] letter [en] papal bull [en] charter [en] birth certificate [en] will [en]||acta de entrega [es]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Dokumentenkategorie",
+          "Definition": "Categorization of a record set, record, or record part with respect to its extrinsic and intrinsic elements that together communicate its content, administrative and documentary context, and authority.",
+          "Domain": [
+            "Record Set",
+            "Record",
+            "Record Part"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable on record or record part, or on record set when describing all members of the record set.||||Repeatable on record set when describing some members of the record set.",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||Documentary form type plays an important role in determining the type of information a record may comprise, its status of perfection, and its authenticity and reliability.||Documentary form types exist in a specific social and cultural context, and within that context, are subject to change over time.||||Do not confuse with the content type attribute of a record set, record, or record part, which describes the form of communication in which a record or record part is expressed (e.g. an image).",
+          "Examples": "deed of gift [en] email [en] letter [en] papal bull [en] charter [en] birth certificate [en] will [en]||acta de entrega [es]",
+          "Example": ""
         }
       },
       {
@@ -1028,6 +1176,22 @@
         },
         "es": {
           "Name": "Event Type",
+          "Definition": "Categorization of an event.",
+          "Domain": [
+            "Event"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "Events of all kinds can be categorized.",
+          "Examples": "accession [en] acquisition [en] arrangement [en] birth [en] description [en] digitization [en] earthquake [en] hurricane [en] marriage [en] transfer [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Ereigniskategorie",
           "Definition": "Categorization of an event.",
           "Domain": [
             "Event"
@@ -1100,6 +1264,22 @@
         },
         "es": {
           "Name": "Family Type",
+          "Definition": "Categorization of a family.",
+          "Domain": [
+            "Family"
+          ],
+          "Specifications": "",
+          "Extensibility": "Not extensible",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "Encompasses a wide variety of familial groups related by consanguinity, affinity, cohabitation, or other social conventions.",
+          "Examples": "family [en] dynasty [en] clan [en] tribe [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Familienkategorie",
           "Definition": "Categorization of a family.",
           "Domain": [
             "Family"
@@ -1234,6 +1414,24 @@
           "Scope": "Within a given domain (a closed system), identifiers are used to uniquely reference instances of an entity. Identifiers are instruments of control that facilitate management of the entities within the domain. The formulation of identifiers commonly is based on rules.||||In addition to an identifier needing to be unique within a domain, it is also highly desirable that it be persistent, that is, that the identifier uniquely identifies the entity over time. A variety of organizations provide rules for the formation of identifiers, and services designed to facilitate the persistence of identifiers. Such identifiers are commonly referred to as Persistent Identifiers (or PIDs). PIDs conform to RFC 3986, but impose additional rules. Common examples are Archival Resource Keys (ARKs)\n[21]\n\n\nand Digital Object Identifiers (DOIs).\n[22]||||Within the global environment of the Internet, there are special rules for the formation of identifiers to ensure that they are unique within the domain of the Internet. Such identifiers must conform to the Internet Engineering Task Force (IETF) Uniform Resource Identifier rules (RFC 3986).\n[23]",
           "Examples": "",
           "Example": ""
+        },
+        "de": {
+          "Name": "Identifikator",
+          "Definition": "A word, number, letter, symbol, or any combination of these used to uniquely identify or reference an individual instance of an entity within a specific information domain.",
+          "Domain": [
+            "Thing"
+          ],
+          "Specifications": "Can include Global Persistent Identifiers (globally unique and persistently resolvable identifier for the entity) and/or Local Identifiers.||||Both the domain within which the identifier is unique, and the rules used in forming the identifier value should be provided with the identifier value.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Rule-based value",
+            "model-based text",
+            "free text"
+          ],
+          "Scope": "Within a given domain (a closed system), identifiers are used to uniquely reference instances of an entity. Identifiers are instruments of control that facilitate management of the entities within the domain. The formulation of identifiers commonly is based on rules.||||In addition to an identifier needing to be unique within a domain, it is also highly desirable that it be persistent, that is, that the identifier uniquely identifies the entity over time. A variety of organizations provide rules for the formation of identifiers, and services designed to facilitate the persistence of identifiers. Such identifiers are commonly referred to as Persistent Identifiers (or PIDs). PIDs conform to RFC 3986, but impose additional rules. Common examples are Archival Resource Keys (ARKs)\n[21]\n\n\nand Digital Object Identifiers (DOIs).\n[22]||||Within the global environment of the Internet, there are special rules for the formation of identifiers to ensure that they are unique within the domain of the Internet. Such identifiers must conform to the Internet Engineering Task Force (IETF) Uniform Resource Identifier rules (RFC 3986).\n[23]",
+          "Examples": "",
+          "Example": ""
         }
       },
       {
@@ -1257,6 +1455,23 @@
         },
         "es": {
           "Name": "Instantiation Extent",
+          "Definition": "Countable characteristics of an instantiation expressed as a quantity.",
+          "Domain": [
+            "Instantiation"
+          ],
+          "Specifications": "",
+          "Extensibility": "The attribute may be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Model-based text",
+            "free text"
+          ],
+          "Scope": "Instantiation extent should not be confused with record resource extent or carrier extent. For a given record resource, the instantiation extent may vary, based on format, density of information on the carrier, etc. For example, a CD with a storage capacity of 700 MB (carrier extent) might hold a record of 1500 words (record resource extent) represented in two versions, one a Word document with an instantiation extent of 3 KB and the other a PDF file with an instantiation extent of 5 KB.",
+          "Examples": "The register has 345 written folios [en] Size of PDF file: 1.5 MB [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Umfang der Instanz|Repräsentation",
           "Definition": "Countable characteristics of an instantiation expressed as a quantity.",
           "Domain": [
             "Instantiation"
@@ -1345,6 +1560,23 @@
           "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||||Controlled Code or Term (ISO 639 Codes for the representation of names of languages; ISO 15924 Codes for the representation of names and scripts; ISO 2332:1993 Information and documentation - Translation of Arabic characters into Latin characters - Part 2: Arabic language - Simplified transliteration; ISO 843:1997 Information and documentation - Conversion of Greek characters into Latin characters).",
           "Examples": "Languages||Arabic (ara) [en]||Chinese (chi) [en]||English (eng) [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Sprache",
+          "Definition": "A spoken or written human language represented in a record resource or used by an agent.",
+          "Domain": [
+            "Record Resource",
+            "Agent"
+          ],
+          "Specifications": "Information includes the language, the script of the language, and the script transliteration scheme when appropriate.||||More than one language may be represented in a record.||||Does not refer to language/script of the description itself.||||An agent may use one or more languages.",
+          "Extensibility": "May be extended with any number of specific attributes, in particular to accommodate separate though interrelated codes for language and script.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||||Controlled Code or Term (ISO 639 Codes for the representation of names of languages; ISO 15924 Codes for the representation of names and scripts; ISO 2332:1993 Information and documentation - Translation of Arabic characters into Latin characters - Part 2: Arabic language - Simplified transliteration; ISO 843:1997 Information and documentation - Conversion of Greek characters into Latin characters).",
+          "Examples": "Languages||Arabic (ara) [en]||Chinese (chi) [en]||English (eng) [en]",
+          "Example": ""
         }
       },
       {
@@ -1368,6 +1600,23 @@
         },
         "es": {
           "Name": "Legal Status",
+          "Definition": "A status defined by law.",
+          "Domain": [
+            "Record Resource",
+            "Agent"
+          ],
+          "Specifications": "",
+          "Extensibility": "Not extensible",
+          "Repeatability": "Not repeatable on record or record part, agent, or on record set when describing all members of the record set.||||Repeatable on record set when describing some members of the record set.",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||||For record and record part, the attribute provides information about legal context.",
+          "Examples": "association [en] [corporate body] non-profit organization [en] [corporate body] public limited company [en] [corporate body] public records [en] [record resource] private papers [en] [record resource]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Rechtstatus",
           "Definition": "A status defined by law.",
           "Domain": [
             "Record Resource",
@@ -1417,6 +1666,22 @@
           "Scope": "The level of precision may vary according to the context.",
           "Examples": "25 rue Saint-Denis à Paris [fr] [street in Paris]||Montreal [city in Canada]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Standort",
+          "Definition": "A delimitation of the physical territory of a place.",
+          "Domain": [
+            "Place"
+          ],
+          "Specifications": "Used to describe basic human-readable text such as an address, a cadastral reference, or less precise information found in a record.||||Use the coordinates attribute (RiC-A11) to capture the geographical coordinates of the place. Use RiC-CM spatial relations (particularly RiC-R075i 'has location') to capture a relation between two places.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Free text"
+          ],
+          "Scope": "The level of precision may vary according to the context.",
+          "Examples": "25 rue Saint-Denis à Paris [fr] [street in Paris]||Montreal [city in Canada]",
+          "Example": ""
         }
       },
       {
@@ -1439,6 +1704,22 @@
         },
         "es": {
           "Name": "Mandate Type",
+          "Definition": "Categorization of a mandate.",
+          "Domain": [
+            "Mandate"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "Administrative arrangements order [en]||Charter [en]||Treaty [en]||Contract [en]||Letter of appointment [en] lettre de mission [fr] Papal mandate [en]||Episcopal mandate [en]||Court mandate [en]||Election mandate [en]||Popular mandate [en] Federal mandate [en]||décret de création et d’organisation des services d’un ministère [fr]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Mandatkategorie",
           "Definition": "Categorization of a mandate.",
           "Domain": [
             "Mandate"
@@ -1475,6 +1756,23 @@
         },
         "es": {
           "Name": "Name",
+          "Definition": "A label, title, or term designating an entity in order to make it distinguishable from other similar entities.",
+          "Domain": [
+            "Thing"
+          ],
+          "Specifications": "Provides brief information about the content or other individual characteristics of the entity being described, necessary to distinguish it from other perhaps similar entities.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Model-based text",
+            "free text"
+          ],
+          "Scope": "",
+          "Examples": "The Letter of Neacsu from Campulung to the Mayor of Brasov [en] [record]||Digital copy of the Pomarius archival inventory from 1575 [en] [instantiation] D-Day [en] [date or event]||Halloween 2016 [date]||Fundraising, University of Glasgow [en] [activity]||Providing hearing services [en] [activity]||Nelson Mandela [person]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Titel",
           "Definition": "A label, title, or term designating an entity in order to make it distinguishable from other similar entities.",
           "Domain": [
             "Thing"
@@ -1546,6 +1844,22 @@
         },
         "es": {
           "Name": "Occupation Type",
+          "Definition": "Categorization of a profession, trade, or craft pursued by a person in fulfilment of an activity.",
+          "Domain": [
+            "Person"
+          ],
+          "Specifications": "A demographic group.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable. A person can have more than one occupation.",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "The pursuit of an occupation involves the performance of an activity. Successful performance of the activity is based on the ability to perform related competencies successfully. Such competencies may be acquired through education or experience, or a combination of both. The authority of the person to pursue the occupation may be derived tacitly or explicitly from an external agent, based on a demonstrated mastery of the competency.||||An occupation may be pursued independently by a person or a group, thereby contributing to the fulfilment of the function (activity) of the group.||||Should not be confused with position where, for example, an agent with the occupation type \"lawyer\" holds the position of \"legal counsel\" in an agency.||||Related to but should not be confused with the domain or field of activity, such as an archivist who works in the domain of archival science.",
+          "Examples": "health professional [en] legal professional [en] service and sales worker [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Beschäftigungskategorie",
           "Definition": "Categorization of a profession, trade, or craft pursued by a person in fulfilment of an activity.",
           "Domain": [
             "Person"
@@ -1631,6 +1945,22 @@
           "Scope": "May be used to distinguish natural and human constructs.",
           "Examples": "settlement [en]||administrative division [en] country [en] mountain [en] river [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Geografikumskategorie",
+          "Definition": "Categorization of a place.",
+          "Domain": [
+            "Place"
+          ],
+          "Specifications": "An indication of the category of a place.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used to distinguish natural and human constructs.",
+          "Examples": "settlement [en]||administrative division [en] country [en] mountain [en] river [en]",
+          "Example": ""
         }
       },
       {
@@ -1654,6 +1984,23 @@
         },
         "es": {
           "Name": "Production Technique",
+          "Definition": "The method used in the representation of information on an instantiation.",
+          "Domain": [
+            "Instantiation"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Free text",
+            "controlled value"
+          ],
+          "Scope": "",
+          "Examples": "handwriting [en] engraving [en] magnetic recording [en] optical recording [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Herstellungstechnikkategorie",
           "Definition": "The method used in the representation of information on an instantiation.",
           "Domain": [
             "Instantiation"
@@ -1742,6 +2089,23 @@
           "Scope": "Record resource extent should not be confused with instantiation extent or carrier extent. The number, size or duration of the information content unit(s) remains the same even if the information is instantiated in various carriers. For example, a CD with a storage capacity of 700 MB (carrier extent) might hold a record of 1,500 words (record resource extent) represented in two versions, one a Word document with an instantiation extent of 3 KB and the other a PDF file with an instantiation extent of 5 KB.",
           "Examples": "3 minutes and 24 seconds [en]||6 maps [en]||6 photographs [en]||2 films [en]||1,500 words [en]||2.065.735 characters [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Recordressourceumfang",
+          "Definition": "The quantity of information content, as human experienced, contained in a record resource.",
+          "Domain": [
+            "Record Resource"
+          ],
+          "Specifications": "The method and precision of expressing the quantity of information represented in a record resource will vary according to the kind of record resource being described, processing economy constraints, etc.||||For record sets, quantity may be expressed as number of records, or, for analogue records in particular, by the physical storage dimensions of the members of the record set.||||For individual records or record parts, quantity may be expressed in more precise terms.",
+          "Extensibility": "May be extended with any number of specific attributes in order to enable use of controlled values or rule-based values.",
+          "Repeatability": "Repeatable",
+          "Value schema": [
+            "Model-based text",
+            "free text"
+          ],
+          "Scope": "Record resource extent should not be confused with instantiation extent or carrier extent. The number, size or duration of the information content unit(s) remains the same even if the information is instantiated in various carriers. For example, a CD with a storage capacity of 700 MB (carrier extent) might hold a record of 1,500 words (record resource extent) represented in two versions, one a Word document with an instantiation extent of 3 KB and the other a PDF file with an instantiation extent of 5 KB.",
+          "Examples": "3 minutes and 24 seconds [en]||6 maps [en]||6 photographs [en]||2 films [en]||1,500 words [en]||2.065.735 characters [en]",
+          "Example": ""
         }
       },
       {
@@ -1764,6 +2128,22 @@
         },
         "es": {
           "Name": "Record Set Type",
+          "Definition": "A broad categorization of the type of record set.",
+          "Domain": [
+            "Record Set"
+          ],
+          "Specifications": "For legacy purposes, this attribute is the equivalent of the Level of Description element in ISAD(G) (3.1.4) except for the value \"item,\" which equates to the record or record part entity in RiC-CM.||||May be extended to categorize types of record set that have not traditionally been considered archival.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "fonds [en] series [en] file [en] collection [en] accrual [en] accession [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Recordgruppenkategorie",
           "Definition": "A broad categorization of the type of record set.",
           "Domain": [
             "Record Set"
@@ -1812,6 +2192,22 @@
           "Scope": "Should not be confused with the carrier type of the instantiation or the content type of a record resource as the form of the communication can be independent of the representation of the carrier, for example a map (content type \"cartographic image\") may be represented as a sketch (representation type \"visual\") recorded as a physical document (carrier type \"paper\").",
           "Examples": "analogue/digital textual [en] analogue/digital visual [en] analogue/digital video [en] analogue/digital audio [en]",
           "Example": ""
+        },
+        "de": {
+          "Name": "Repräsentationskategorie",
+          "Definition": "Method of recording the content type of an instantiation",
+          "Domain": [
+            "Instantiation"
+          ],
+          "Specifications": "Can be unmediated (which allows humans to receive the message communicated without an intermediation of a device) and mediated (which needs a device to decode the message). A lot of contemporary mediated types are digital.||||Each representation type may present specific features: bit rate for audio, resolution for digital images, encoding format for video etc. Depending on the type, specific attributes may be added to describe their characteristics.",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "Should not be confused with the carrier type of the instantiation or the content type of a record resource as the form of the communication can be independent of the representation of the carrier, for example a map (content type \"cartographic image\") may be represented as a sketch (representation type \"visual\") recorded as a physical document (carrier type \"paper\").",
+          "Examples": "analogue/digital textual [en] analogue/digital visual [en] analogue/digital video [en] analogue/digital audio [en]",
+          "Example": ""
         }
       },
       {
@@ -1834,6 +2230,22 @@
         },
         "es": {
           "Name": "Rule Type",
+          "Definition": "Categorization of a rule.",
+          "Domain": [
+            "Rule"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "",
+          "Examples": "Legislation [en]||Regulation [en]||By-law [en]||Constitution [en]||International standard [en]||Jurisdictional standard [en]||Industry code of practice [en]||Cultural norm [en]||Directive [en]||Community expectation [en]||Social convention [en]||Ordinance [en]||Policy [en]||Professional standard [en]||Règle de commnunication des documents [fr]||Tableau de gestion de documents d’activité [fr]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Regelkategorie",
           "Definition": "Categorization of a rule.",
           "Domain": [
             "Rule"
@@ -1906,6 +2318,22 @@
         },
         "es": {
           "Name": "State",
+          "Definition": "Description of the production or reproduction status of a record\nresource.",
+          "Domain": [
+            "Record Resource"
+          ],
+          "Specifications": "",
+          "Extensibility": "May be extended with any number of specific attributes.",
+          "Repeatability": "Not repeatable on record or record part, or on record set when describing all members of the record set.||Repeatable on record set when describing some members of the record set.",
+          "Value schema": [
+            "Controlled value"
+          ],
+          "Scope": "May be used in a record set description when the attribute value is shared by some or all members of the record set.||||Can refer both to a record's stage of creation (for example \"draft\") and its form of transmission when the record was received (for example \"copy\").",
+          "Examples": "draft [en] final draft [en] original [en] simple copy [en] certified copy [en]",
+          "Example": ""
+        },
+        "de": {
+          "Name": "Recordstatus",
           "Definition": "Description of the production or reproduction status of a record\nresource.",
           "Domain": [
             "Record Resource"
@@ -4432,6 +4860,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R003 has or had constituent||RiC-R004 has or had component||RiC-R005 has or had subdivision||RiC-R006 has or had subevent||RiC-R007 contains or contained||RiC-R024 includes or included||RiC-R085i has within (inverse of RiC-R085 is within)",
           "Relation types": "Whole/part relations"
+        },
+        "de": {
+          "Name": "Teil-Ganzes-Beziehung",
+          "Inverse": {
+            "ID": "RiC-R002i",
+            "Name": "is  or was part of"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a thing to a thing that is or was a portion or division of the whole thing.",
+          "Scope Notes": "Use to connect a thing to another thing that is or was a part of the whole thing only if it is not possible to use a narrower, more specific whole/part relation, for example has or had constituent.||The end of existence of a whole/part relation may affect the integrity or nature of the domain entity.",
+          "Examples": "Princeton Ethiopic Manuscripts [record set] has or had part Miracles of Mary [record]||[en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R003 has or had constituent||RiC-R004 has or had component||RiC-R005 has or had subdivision||RiC-R006 has or had subevent||RiC-R007 contains or contained||RiC-R024 includes or included||RiC-R085i has within (inverse of RiC-R085 is within)",
+          "Relation types": "Whole/part relations"
         }
       },
       {
@@ -4456,6 +4902,24 @@
         },
         "es": {
           "Name": "is  or was part of",
+          "Inverse": {
+            "ID": "RiC-R002",
+            "Name": "has or  had part"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a thing to a thing that is or was a portion or division of the whole thing.",
+          "Scope Notes": "Use to connect a thing to another thing that is or was a part of the whole thing only if it is not possible to use a narrower, more specific whole/part relation, for example has or had constituent.||The end of existence of a whole/part relation may affect the integrity or nature of the domain entity.",
+          "Examples": "Princeton Ethiopic Manuscripts [record set] has or had part Miracles of Mary [record]||[en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R003 has or had constituent||RiC-R004 has or had component||RiC-R005 has or had subdivision||RiC-R006 has or had subevent||RiC-R007 contains or contained||RiC-R024 includes or included||RiC-R085i has within (inverse of RiC-R085 is within)",
+          "Relation types": "Whole/part relations"
+        },
+        "de": {
+          "Name": "Teil-Ganzes-Beziehung",
           "Inverse": {
             "ID": "RiC-R002",
             "Name": "has or  had part"
@@ -4666,6 +5130,24 @@
           "Broader relations": "RiC-R002 has or had part||RiC-R045 has or had subordinate",
           "Narrower relations": "None",
           "Relation types": "Whole/part relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Gruppe-Untergruppe",
+          "Inverse": {
+            "ID": "RiC-R005i",
+            "Name": "is or was subdivision of"
+          },
+          "DomainRange": {
+            "Domain": "Group",
+            "Range": "Group"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a group to one of its present or past subdivisions.",
+          "Scope Notes": "",
+          "Examples": "Depuis Janvier 2010, le ministère français de la Culture has or had subdivision la Direction générale des Patrimoines. [fr]||O Departamento Federal de Segurança Pública has or had subdivision a Divisão de||Polícia Marítima Aérea e de Fronteiras. [pt]||A Divisão de Polícia Marítima Aérea e de Fronteiras is or was subdivision of Departamento Federal de Segurança Pública. [pt]",
+          "Broader relations": "RiC-R002 has or had part||RiC-R045 has or had subordinate",
+          "Narrower relations": "None",
+          "Relation types": "Whole/part relations||Agent to agent relations"
         }
       },
       {
@@ -4690,6 +5172,24 @@
         },
         "es": {
           "Name": "is or was subdivision of",
+          "Inverse": {
+            "ID": "RiC-R005",
+            "Name": "has or had subdivision"
+          },
+          "DomainRange": {
+            "Domain": "Group",
+            "Range": "Group"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a group to one of its present or past subdivisions.",
+          "Scope Notes": "",
+          "Examples": "Depuis Janvier 2010, le ministère français de la Culture has or had subdivision la Direction générale des Patrimoines. [fr]||O Departamento Federal de Segurança Pública has or had subdivision a Divisão de||Polícia Marítima Aérea e de Fronteiras. [pt]||A Divisão de Polícia Marítima Aérea e de Fronteiras is or was subdivision of Departamento Federal de Segurança Pública. [pt]",
+          "Broader relations": "RiC-R002 has or had part||RiC-R045 has or had subordinate",
+          "Narrower relations": "None",
+          "Relation types": "Whole/part relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Gruppe-Untergruppe",
           "Inverse": {
             "ID": "RiC-R005",
             "Name": "has or had subdivision"
@@ -4900,6 +5400,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R009 precedes in time",
           "Relation types": "Sequential relations"
+        },
+        "de": {
+          "Name": "Ding-Abfolge-Ding",
+          "Inverse": {
+            "ID": "RiC-R008i",
+            "Name": "follows or followed"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a thing to a thing that follows or followed it in some sequence.",
+          "Scope Notes": "The relation does not specify the criteria used for ordering the sequence.||There may be zero to many intermediate entities, ignored or unknown, in the sequence between the two connected things.||Can be used, for example, for specifying that a record \"has next\" another record within a record set.",
+          "Examples": "paragraph 1 [record part] precedes or preceded image 1 [record part] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R009 precedes in time",
+          "Relation types": "Sequential relations"
         }
       },
       {
@@ -4924,6 +5442,24 @@
         },
         "es": {
           "Name": "follows or followed",
+          "Inverse": {
+            "ID": "RiC-R008",
+            "Name": "precedes or preceded"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a thing to a thing that follows or followed it in some sequence.",
+          "Scope Notes": "The relation does not specify the criteria used for ordering the sequence.||There may be zero to many intermediate entities, ignored or unknown, in the sequence between the two connected things.||Can be used, for example, for specifying that a record \"has next\" another record within a record set.",
+          "Examples": "paragraph 1 [record part] precedes or preceded image 1 [record part] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R009 precedes in time",
+          "Relation types": "Sequential relations"
+        },
+        "de": {
+          "Name": "Ding-Abfolge-Ding",
           "Inverse": {
             "ID": "RiC-R008",
             "Name": "precedes or preceded"
@@ -4978,6 +5514,24 @@
           "Broader relations": "RiC-R008 precedes or preceded",
           "Narrower relations": "RiC-R010 is original of||RiC-R011 is draft of||RiC-R012 has copy||RiC-R013 has reply||RiC-R014 has or had derived instantiation||RiC-R016 has successor",
           "Relation types": "Sequential relations"
+        },
+        "de": {
+          "Name": "Ding-Zeitfolge-Ding",
+          "Inverse": {
+            "ID": "RiC-R009i",
+            "Name": "follows  in time"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a thing to a thing that follows it in chronological order.",
+          "Scope Notes": "There may be zero to many intermediate entities, ignored or unknown, in the chronological sequence between the two connected entities.",
+          "Examples": "El Ministerio de Educación y Cultura (1996-2000) [corporate body] precedes in time el||Ministerio de Ciencia y Tecnología (2000-2004) [corporate body]. [es]||O Departamento Federal de Segurança Pública [corporate body] precedes in time o||Departamento de Polícia Federal [corporate body]. [pt]||O Departamento de Polícia Federal [corporate body] follows in time o Departamento||Federal de Segurança Pública [corporate body]. [pt]",
+          "Broader relations": "RiC-R008 precedes or preceded",
+          "Narrower relations": "RiC-R010 is original of||RiC-R011 is draft of||RiC-R012 has copy||RiC-R013 has reply||RiC-R014 has or had derived instantiation||RiC-R016 has successor",
+          "Relation types": "Sequential relations"
         }
       },
       {
@@ -5002,6 +5556,24 @@
         },
         "es": {
           "Name": "follows  in time",
+          "Inverse": {
+            "ID": "RiC-R009",
+            "Name": "precedes  in time"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a thing to a thing that follows it in chronological order.",
+          "Scope Notes": "There may be zero to many intermediate entities, ignored or unknown, in the chronological sequence between the two connected entities.",
+          "Examples": "El Ministerio de Educación y Cultura (1996-2000) [corporate body] precedes in time el||Ministerio de Ciencia y Tecnología (2000-2004) [corporate body]. [es]||O Departamento Federal de Segurança Pública [corporate body] precedes in time o||Departamento de Polícia Federal [corporate body]. [pt]||O Departamento de Polícia Federal [corporate body] follows in time o Departamento||Federal de Segurança Pública [corporate body]. [pt]",
+          "Broader relations": "RiC-R008 precedes or preceded",
+          "Narrower relations": "RiC-R010 is original of||RiC-R011 is draft of||RiC-R012 has copy||RiC-R013 has reply||RiC-R014 has or had derived instantiation||RiC-R016 has successor",
+          "Relation types": "Sequential relations"
+        },
+        "de": {
+          "Name": "Ding-Zeitfolge-Ding",
           "Inverse": {
             "ID": "RiC-R009",
             "Name": "precedes  in time"
@@ -5368,6 +5940,24 @@
           "Broader relations": "RiC-R009 precedes in time||RiC-R034 is instantiation associated with instantiation",
           "Narrower relations": "RiC-R015 migrated into",
           "Relation types": "Sequential relations||Instantiation to instantiation relations"
+        },
+        "de": {
+          "Name": "Instanz-Derivat-Instanz",
+          "Inverse": {
+            "ID": "RiC-R014i",
+            "Name": "is or was derived from instantiation"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects an instantiation to an instantiation that is derived from it, whether it exists or has been lost or destroyed.",
+          "Scope Notes": "In some situations, it may be useful or necessary to connect an instantiation to an instantiation that was derived from it but no longer exists or has been lost.",
+          "Examples": "Le tirage photographique de la vue aérienne de la ville d’Ambérieux-en-Dombes (Ain, France), au sein de l’album 1PH/C/1 du fonds Lapie, has or had derived instantiation l’image numérique dont l’identifiant local est FRAN_0207_0001_A.||[fr]",
+          "Broader relations": "RiC-R009 precedes in time||RiC-R034 is instantiation associated with instantiation",
+          "Narrower relations": "RiC-R015 migrated into",
+          "Relation types": "Sequential relations||Instantiation to instantiation relations"
         }
       },
       {
@@ -5446,6 +6036,24 @@
           "Broader relations": "RiC-R014 has or had derived instantiation",
           "Narrower relations": "None",
           "Relation types": "Sequential relations||Instantiation to instantiation relations"
+        },
+        "de": {
+          "Name": "Repräsentation-Migration-Repräsentation",
+          "Inverse": {
+            "ID": "RiC-R015i",
+            "Name": "migrated  from"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects an instantiation to a version it has been migrated into.",
+          "Scope Notes": "Use for digital instantiations.",
+          "Examples": "Microsoft Word document with the filename Draft_2019.docx migrated into normalized PDF/A with filename mums1023_00_b1.pdf [en]",
+          "Broader relations": "RiC-R014 has or had derived instantiation",
+          "Narrower relations": "None",
+          "Relation types": "Sequential relations||Instantiation to instantiation relations"
         }
       },
       {
@@ -5485,6 +6093,24 @@
           "Broader relations": "RiC-R014 has or had derived instantiation",
           "Narrower relations": "None",
           "Relation types": "Sequential relations||Instantiation to instantiation relations"
+        },
+        "de": {
+          "Name": "Repräsentation-Migration-Repräsentation",
+          "Inverse": {
+            "ID": "RiC-R015",
+            "Name": "migrated into"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects an instantiation to a version it has been migrated into.",
+          "Scope Notes": "Use for digital instantiations.",
+          "Examples": "Microsoft Word document with the filename Draft_2019.docx migrated into normalized PDF/A with filename mums1023_00_b1.pdf [en]",
+          "Broader relations": "RiC-R014 has or had derived instantiation",
+          "Narrower relations": "None",
+          "Relation types": "Sequential relations||Instantiation to instantiation relations"
         }
       },
       {
@@ -5509,6 +6135,24 @@
         },
         "es": {
           "Name": "has  successor",
+          "Inverse": {
+            "ID": "RiC-R016i",
+            "Name": "is  successor of"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to another agent that succeeds it chronologically.",
+          "Scope Notes": "There may be zero to many intermediate agents, ignored or unknown, between the two connected agents.||Can be used when there is a transfer of function from the first agent to the second agent.",
+          "Examples": "Le Bureau des Monuments historiques (1863-1870) (au sein de la Surintendance des Beaux-Arts, une subdivision du ministère français de la maison de l'Empereur) has successor le Bureau des Monuments historiques (1870-1907) au sein de la Direction des Beaux-Arts, une subdivision du ministère français de l'Instruction publique. [corporate body] [fr]||La Administración de Hacienda de la provincia de Barcelona has successor la||Delegación Provincial de Hacienda de Barcelona y is successor of la Intendencia de Ejército y Provincia del Principado de Cataluña, en sus funciones Hacendísticas. [corporate body] [es]||O Departamento Federal de Segurança Pública has successor o Departamento de Polícia Federal. [corporate body] [pt]||O Departamento de Pollícia Federal is successor of o Departamento Federal de||Segurança Pública. [corporate body] [pt]",
+          "Broader relations": "RiC-R009 precedes in time||RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R017 has descendant",
+          "Relation types": "Sequential relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Nachfolge",
           "Inverse": {
             "ID": "RiC-R016i",
             "Name": "is  successor of"
@@ -5602,6 +6246,24 @@
           "Broader relations": "RiC-R016 has successor||RiC-R047 has family association with",
           "Narrower relations": "RiC-R018 has child",
           "Relation types": "Sequential relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Nachkommen",
+          "Inverse": {
+            "ID": "RiC-R017i",
+            "Name": "has  ancestor"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to one of their descendants.",
+          "Scope Notes": "There may be zero to many intermediate persons, ignored or unknown, between the two connected persons.",
+          "Examples": "Marc Ferrez has descendant Gilberto Ferrez. [pt]||Gilberto Ferrez has ancestor Marc Ferrez. [pt]",
+          "Broader relations": "RiC-R016 has successor||RiC-R047 has family association with",
+          "Narrower relations": "RiC-R018 has child",
+          "Relation types": "Sequential relations||Agent to agent relations"
         }
       },
       {
@@ -5626,6 +6288,24 @@
         },
         "es": {
           "Name": "has  ancestor",
+          "Inverse": {
+            "ID": "RiC-R017",
+            "Name": "has descendant"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to one of their descendants.",
+          "Scope Notes": "There may be zero to many intermediate persons, ignored or unknown, between the two connected persons.",
+          "Examples": "Marc Ferrez has descendant Gilberto Ferrez. [pt]||Gilberto Ferrez has ancestor Marc Ferrez. [pt]",
+          "Broader relations": "RiC-R016 has successor||RiC-R047 has family association with",
+          "Narrower relations": "RiC-R018 has child",
+          "Relation types": "Sequential relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Nachkommen",
           "Inverse": {
             "ID": "RiC-R017",
             "Name": "has descendant"
@@ -5680,6 +6360,24 @@
           "Broader relations": "RiC-R017 has descendant",
           "Narrower relations": "None",
           "Relation types": "Sequential relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Kind",
+          "Inverse": {
+            "ID": "RiC-R018i",
+            "Name": "is  child of"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to one of their children.",
+          "Scope Notes": "",
+          "Examples": "Alfonso Carlos de Borbón y Austria-Este (1849-1936) is child of Mª Beatriz de Austria-Este (1824- 1906). [es]||Júlio Ferrez has child Gilberto Ferrez. [pt]||Gilberto Ferrez is child of Júlio Ferrez. [pt]",
+          "Broader relations": "RiC-R017 has descendant",
+          "Narrower relations": "None",
+          "Relation types": "Sequential relations||Agent to agent relations"
         }
       },
       {
@@ -5704,6 +6402,24 @@
         },
         "es": {
           "Name": "is  child of",
+          "Inverse": {
+            "ID": "RiC-R018",
+            "Name": "has child"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to one of their children.",
+          "Scope Notes": "",
+          "Examples": "Alfonso Carlos de Borbón y Austria-Este (1849-1936) is child of Mª Beatriz de Austria-Este (1824- 1906). [es]||Júlio Ferrez has child Gilberto Ferrez. [pt]||Gilberto Ferrez is child of Júlio Ferrez. [pt]",
+          "Broader relations": "RiC-R017 has descendant",
+          "Narrower relations": "None",
+          "Relation types": "Sequential relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Kind",
           "Inverse": {
             "ID": "RiC-R018",
             "Name": "has child"
@@ -5992,6 +6708,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R003 has or had constituent||RiC-R003i is or was constituent of||RiC-R013 has reply||RiC-R013i is reply to||RiC-R023 has genetic link to record resource||RiC-R024 includes or included||RiC-R024i is or was included in",
           "Relation types": "Record resource to record resource relations"
+        },
+        "de": {
+          "Name": "Recordressource-Recordressource",
+          "Inverse": {
+            "ID": "RiC-R022i",
+            "Name": "is record resource associated with record resource"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource",
+            "Range": "Record Resource"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two record resources.||This relation is symmetric.",
+          "Scope Notes": "Use to connect two record resources only if it is not possible to use a narrower, more specific relation, for example has genetic link to.",
+          "Examples": "La Planta de la ciudadela, ciudad y puerto de Messina (Sicilia) [por Carlos||Grunembergh] [1686] is record resource associated with record resource el fondo de Consejo de Italia (siglos XVI-XVIII). [es]||Graças Honoríficas is record resource associated with record resource Ordens Honoríficas. [pt]||Ordens Honoríficas is record resource associated with record resource Graças Honoríficas. [pt]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R003 has or had constituent||RiC-R003i is or was constituent of||RiC-R013 has reply||RiC-R013i is reply to||RiC-R023 has genetic link to record resource||RiC-R024 includes or included||RiC-R024i is or was included in",
+          "Relation types": "Record resource to record resource relations"
         }
       },
       {
@@ -6055,6 +6789,24 @@
         },
         "es": {
           "Name": "has genetic link to record  resource",
+          "Inverse": {
+            "ID": "RiC-R023i",
+            "Name": "has genetic link to record resource"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource",
+            "Range": "Record Resource"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two record resources when there is a genetic link between them. Genetic in this sense is as defined by diplomatics, i.e., the process by which a record resource is developed.||This relation is symmetric.",
+          "Scope Notes": "Use to connect two record resources only if it is not possible to use a narrower, more specific, asymmetric record resource to record resource relation, for example is original of.",
+          "Examples": "",
+          "Broader relations": "RiC-R022 is record resource associated with record resource",
+          "Narrower relations": "RiC-R010 is original of||RiC-R010i has original||RiC-R011 is draft of||RiC-R011i has draft||RiC-R012 has copy||RiC-R012i is copy of||",
+          "Relation types": "Record resource to record resource relations"
+        },
+        "de": {
+          "Name": "Recordressource-Entstehungszusammenhang-Recordressource",
           "Inverse": {
             "ID": "RiC-R023i",
             "Name": "has genetic link to record resource"
@@ -6226,6 +6978,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "None",
           "Relation types": "Record resource to instantiation relations"
+        },
+        "de": {
+          "Name": "Recordressource-Repräsentation",
+          "Inverse": {
+            "ID": "RiC-R025i",
+            "Name": "is or was instantiation of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a record resource to an instantiation, which either may exist or may have been lost or destroyed.||",
+          "Scope Notes": "In some situations, it may be useful or necessary to connect a record resource to an instantiation that no longer exists or has been lost, when some of its characteristics are known from a source, such as an old finding aid.",
+          "Examples": "La série organique [record set] de photographies aériennes qui concerne le territoire de la commune d’Ambérieux-en-Dombes (Ain) dans le fonds Lapie has or had instantiation les tirages photographiques cotés \"C.T. 104 1K-2K.\" [fr]||La même série [record set] has or had instantiation le lot d’images numériques dont l’identifiant est FRAN_0207_0001_A#FRAN_0207_0002_A. [fr]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "None",
+          "Relation types": "Record resource to instantiation relations"
         }
       },
       {
@@ -6250,6 +7020,24 @@
         },
         "es": {
           "Name": "is or was instantiation of",
+          "Inverse": {
+            "ID": "RiC-R025",
+            "Name": "has or had instantiation"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Record Resource"
+          },
+          "Cardinality": "1 to M",
+          "Definition": "Connects a record resource to an instantiation, which either may exist or may have been lost or destroyed.||",
+          "Scope Notes": "In some situations, it may be useful or necessary to connect a record resource to an instantiation that no longer exists or has been lost, when some of its characteristics are known from a source, such as an old finding aid.",
+          "Examples": "La série organique [record set] de photographies aériennes qui concerne le territoire de la commune d’Ambérieux-en-Dombes (Ain) dans le fonds Lapie has or had instantiation les tirages photographiques cotés \"C.T. 104 1K-2K.\" [fr]||La même série [record set] has or had instantiation le lot d’images numériques dont l’identifiant est FRAN_0207_0001_A#FRAN_0207_0002_A. [fr]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "None",
+          "Relation types": "Record resource to instantiation relations"
+        },
+        "de": {
+          "Name": "Recordressource-Repräsentation",
           "Inverse": {
             "ID": "RiC-R025",
             "Name": "has or had instantiation"
@@ -6304,6 +7092,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R027 has creator||RiC-R028 has accumulator||RiC-R031 has sender||RiC-R032 has addressee",
           "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Herkunft-Akteur",
+          "Inverse": {
+            "ID": "RiC-R026i",
+            "Name": "is  provenance of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a record resource or an instantiation to an agent that creates or accumulates the record resource or receives or sends it.",
+          "Scope Notes": "This is the most general provenance relation. Use it to connect a record resource or instantiation with an agent only if it is not possible to use a narrower, more specific relation, for example has creator.",
+          "Examples": "C. T. Lanham Papers on Ernest Hemingway [record set] has provenance Lanham, C. T. (Charles Trueman), 1902- [person] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R027 has creator||RiC-R028 has accumulator||RiC-R031 has sender||RiC-R032 has addressee",
+          "Relation types": "Provenance relations"
         }
       },
       {
@@ -6328,6 +7134,24 @@
         },
         "es": {
           "Name": "is  provenance of",
+          "Inverse": {
+            "ID": "RiC-R026",
+            "Name": "has provenance"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a record resource or an instantiation to an agent that creates or accumulates the record resource or receives or sends it.",
+          "Scope Notes": "This is the most general provenance relation. Use it to connect a record resource or instantiation with an agent only if it is not possible to use a narrower, more specific relation, for example has creator.",
+          "Examples": "C. T. Lanham Papers on Ernest Hemingway [record set] has provenance Lanham, C. T. (Charles Trueman), 1902- [person] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R027 has creator||RiC-R028 has accumulator||RiC-R031 has sender||RiC-R032 has addressee",
+          "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Herkunft-Akteur",
           "Inverse": {
             "ID": "RiC-R026",
             "Name": "has provenance"
@@ -6382,6 +7206,24 @@
           "Broader relations": "RiC-R026 has provenance",
           "Narrower relations": "RiC-R079 has author",
           "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Erstellung-Akteur",
+          "Inverse": {
+            "ID": "RiC-R027i",
+            "Name": "is  creator of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Agent"
+          },
+          "Cardinality": "",
+          "Definition": "Connects a record resource or an instantiation to the agent that is either responsible for all or some of the content of the record resource or is a contributor to the genesis or production of an instantiation.",
+          "Scope Notes": "Covers the definition of \"author\" in diplomatics, and any agent that makes a contribution to the intellectual content of a record resource.||Can also be used for any agent that was involved in the genesis (e.g. with the role of witness, representative of the author etc.) or in the production (e.g. with the role of scribe, secretary, notary, printer etc.) of the record resource or instantiation.",
+          "Examples": "Matilde de Baviera (1877-1906) [person] is creator of la Carta de Mathilde de Baviera a María de las Nieves, anunciándole su compromiso con el Príncipe Luis de Sajonia-Coburgo (15-12-1899) [record set]. [es]||Serviço Nacional de Informações [corporate body] is creator of Serviço Nacional de Informações [record set]. [pt]||Serviço Nacional de Informações [record set] has creator Serviço Nacional de||Informações [corporate body]. [pt]",
+          "Broader relations": "RiC-R026 has provenance",
+          "Narrower relations": "RiC-R079 has author",
+          "Relation types": "Provenance relations"
         }
       },
       {
@@ -6406,6 +7248,24 @@
         },
         "es": {
           "Name": "is  creator of",
+          "Inverse": {
+            "ID": "RiC-R027",
+            "Name": "has creator"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "",
+          "Definition": "Connects a record resource or an instantiation to the agent that is either responsible for all or some of the content of the record resource or is a contributor to the genesis or production of an instantiation.",
+          "Scope Notes": "Covers the definition of \"author\" in diplomatics, and any agent that makes a contribution to the intellectual content of a record resource.||Can also be used for any agent that was involved in the genesis (e.g. with the role of witness, representative of the author etc.) or in the production (e.g. with the role of scribe, secretary, notary, printer etc.) of the record resource or instantiation.",
+          "Examples": "Matilde de Baviera (1877-1906) [person] is creator of la Carta de Mathilde de Baviera a María de las Nieves, anunciándole su compromiso con el Príncipe Luis de Sajonia-Coburgo (15-12-1899) [record set]. [es]||Serviço Nacional de Informações [corporate body] is creator of Serviço Nacional de Informações [record set]. [pt]||Serviço Nacional de Informações [record set] has creator Serviço Nacional de||Informações [corporate body]. [pt]",
+          "Broader relations": "RiC-R026 has provenance",
+          "Narrower relations": "RiC-R079 has author",
+          "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Erstellung-Akteur",
           "Inverse": {
             "ID": "RiC-R027",
             "Name": "has creator"
@@ -6460,6 +7320,24 @@
           "Broader relations": "RiC-R026 has provenance",
           "Narrower relations": "RiC-R029 has receiver RiC-R030 has collector",
           "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Akteur-Bestandsbildung",
+          "Inverse": {
+            "ID": "RiC-R028i",
+            "Name": "is  accumulator of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a record resource or an instantiation to the agent that accumulated it, be it intentionally (collecting) or not (receiving in the course of the agent's activities).",
+          "Scope Notes": "",
+          "Examples": "C. T. Lanham Papers on Ernest Hemingway [record set] has accumulator Lanham, C.||T. (Charles Trueman), 1902- [person] [en]||Princeton Ethiopic Manuscripts [record set] has accumulator Princeton University||Library [corporate body]. [en]",
+          "Broader relations": "RiC-R026 has provenance",
+          "Narrower relations": "RiC-R029 has receiver RiC-R030 has collector",
+          "Relation types": "Provenance relations"
         }
       },
       {
@@ -6484,6 +7362,24 @@
         },
         "es": {
           "Name": "is  accumulator of",
+          "Inverse": {
+            "ID": "RiC-R028",
+            "Name": "has  accumulator"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a record resource or an instantiation to the agent that accumulated it, be it intentionally (collecting) or not (receiving in the course of the agent's activities).",
+          "Scope Notes": "",
+          "Examples": "C. T. Lanham Papers on Ernest Hemingway [record set] has accumulator Lanham, C.||T. (Charles Trueman), 1902- [person] [en]||Princeton Ethiopic Manuscripts [record set] has accumulator Princeton University||Library [corporate body]. [en]",
+          "Broader relations": "RiC-R026 has provenance",
+          "Narrower relations": "RiC-R029 has receiver RiC-R030 has collector",
+          "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Akteur-Bestandsbildung",
           "Inverse": {
             "ID": "RiC-R028",
             "Name": "has  accumulator"
@@ -6850,6 +7746,24 @@
           "Broader relations": "RiC-R001 is related to||RiC-R061i results or resulted from (inverse of RiC-R061 results or resulted in)",
           "Narrower relations": "None",
           "Relation types": "Provenance relations Event relations"
+        },
+        "de": {
+          "Name": "Recordressource/Instanz-Aktivität",
+          "Inverse": {
+            "ID": "RiC-R033i",
+            "Name": "documented  by"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Activity"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a record resource or an instantiation to the activity that generates the record resource or instantiation.",
+          "Scope Notes": "To be used to describe the functional provenance of a record resource or instantiation.",
+          "Examples": "El Título de Duque de Terranova a Carlo d'Aragona Tagliavia (20-7-1561) [record] documents la Concesión de títulos nobiliarios . [es]",
+          "Broader relations": "RiC-R001 is related to||RiC-R061i results or resulted from (inverse of RiC-R061 results or resulted in)",
+          "Narrower relations": "None",
+          "Relation types": "Provenance relations Event relations"
         }
       },
       {
@@ -7006,6 +7920,24 @@
           "Broader relations": "RiC-R034 is instantiation associated with instantiation",
           "Narrower relations": "None",
           "Relation types": "Instantiation to instantiation relations"
+        },
+        "de": {
+          "Name": "Repräsentation-Äquivalent-Repräsentation",
+          "Inverse": {
+            "ID": "RiC-R035i",
+            "Name": "is functionally equivalent to"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two instantiations which may be considered as equivalent.||This relation is symmetric.",
+          "Scope Notes": "Two instantiations, from some point of view, may be considered as equivalent. This equivalence is usually based upon the fact that the instantiations have at least the same intellectual content (they instantiate the same record resource).",
+          "Examples": "Surrogate copy of Letter from Ernest Hemingway to Milford J. Baker I, 12 February 1930 is functionally equivalent to Letter from Ernest Hemingway to Milford J.||Baker I, 12 February 1930 [en]",
+          "Broader relations": "RiC-R034 is instantiation associated with instantiation",
+          "Narrower relations": "None",
+          "Relation types": "Instantiation to instantiation relations"
         }
       },
       {
@@ -7030,6 +7962,24 @@
         },
         "es": {
           "Name": "is functionally equivalent to",
+          "Inverse": {
+            "ID": "RiC-R035",
+            "Name": "is functionally equivalent to"
+          },
+          "DomainRange": {
+            "Domain": "Instantiation",
+            "Range": "Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two instantiations which may be considered as equivalent.||This relation is symmetric.",
+          "Scope Notes": "Two instantiations, from some point of view, may be considered as equivalent. This equivalence is usually based upon the fact that the instantiations have at least the same intellectual content (they instantiate the same record resource).",
+          "Examples": "Surrogate copy of Letter from Ernest Hemingway to Milford J. Baker I, 12 February 1930 is functionally equivalent to Letter from Ernest Hemingway to Milford J.||Baker I, 12 February 1930 [en]",
+          "Broader relations": "RiC-R034 is instantiation associated with instantiation",
+          "Narrower relations": "None",
+          "Relation types": "Instantiation to instantiation relations"
+        },
+        "de": {
+          "Name": "Repräsentation-Äquivalent-Repräsentation",
           "Inverse": {
             "ID": "RiC-R035",
             "Name": "is functionally equivalent to"
@@ -7084,6 +8034,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R037 is or was owner of||RiC-R038 is or was manager of||RiC-R040 is or was holder of intellectual property rights of RiC-R041 is or was controller of",
           "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Autorität-Ding",
+          "Inverse": {
+            "ID": "RiC-R036i",
+            "Name": "is  or was under authority of"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a thing over which the agent has or had some kind of authority.",
+          "Scope Notes": "Use only if it is not possible to specify a narrower management relation, for example is or was owner of.",
+          "Examples": "",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R037 is or was owner of||RiC-R038 is or was manager of||RiC-R040 is or was holder of intellectual property rights of RiC-R041 is or was controller of",
+          "Relation types": "Management relations"
         }
       },
       {
@@ -7108,6 +8076,24 @@
         },
         "es": {
           "Name": "is  or was under authority of",
+          "Inverse": {
+            "ID": "RiC-R036",
+            "Name": "has or had authority over"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a thing over which the agent has or had some kind of authority.",
+          "Scope Notes": "Use only if it is not possible to specify a narrower management relation, for example is or was owner of.",
+          "Examples": "",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R037 is or was owner of||RiC-R038 is or was manager of||RiC-R040 is or was holder of intellectual property rights of RiC-R041 is or was controller of",
+          "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Autorität-Ding",
           "Inverse": {
             "ID": "RiC-R036",
             "Name": "has or had authority over"
@@ -7162,6 +8148,24 @@
           "Broader relations": "RiC-R036 has or had authority over",
           "Narrower relations": "None",
           "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Gruppe/Person/Position-Besitz-Ding",
+          "Inverse": {
+            "ID": "RiC-R037i",
+            "Name": "has  or had owner"
+          },
+          "DomainRange": {
+            "Domain": "Group or Person or Position",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a thing that the agent owns or owned.",
+          "Scope Notes": "",
+          "Examples": "La Universidad Pública de Navarra (corporate body) is or was owner of los||Expedientes de personal investigador en formación [record set]. [es]||Ruy Alexandre Guerra Coelho Pereira [person] is or was owner of Ruy Guerra [record||set]. [pt]||Ruy Guerra [record set] has or had owner Ruy Alexandre Guerra Coelho Pereira [person]. [pt]",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "None",
+          "Relation types": "Management relations"
         }
       },
       {
@@ -7186,6 +8190,24 @@
         },
         "es": {
           "Name": "has  or had owner",
+          "Inverse": {
+            "ID": "RiC-R037",
+            "Name": "is or was  owner of"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Group or Person or Position"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a thing that the agent owns or owned.",
+          "Scope Notes": "",
+          "Examples": "La Universidad Pública de Navarra (corporate body) is or was owner of los||Expedientes de personal investigador en formación [record set]. [es]||Ruy Alexandre Guerra Coelho Pereira [person] is or was owner of Ruy Guerra [record||set]. [pt]||Ruy Guerra [record set] has or had owner Ruy Alexandre Guerra Coelho Pereira [person]. [pt]",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "None",
+          "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Gruppe/Person/Position-Besitz-Ding",
           "Inverse": {
             "ID": "RiC-R037",
             "Name": "is or was  owner of"
@@ -7240,6 +8262,24 @@
           "Broader relations": "RiC-R036 has or had authority over",
           "Narrower relations": "RiC-R039 is or was holder of",
           "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Management-Recordressource/Instanz",
+          "Inverse": {
+            "ID": "RiC-R038i",
+            "Name": "has or had manager"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a record resource or instantiation that the agent manages or managed.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "RiC-R039 is or was holder of",
+          "Relation types": "Management relations"
         }
       },
       {
@@ -7279,6 +8319,24 @@
           "Broader relations": "RiC-R036 has or had authority over",
           "Narrower relations": "RiC-R039 is or was holder of",
           "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Management-Recordressource/Instanz",
+          "Inverse": {
+            "ID": "RiC-R038",
+            "Name": "is or was manager of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a record resource or instantiation that the agent manages or managed.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "RiC-R039 is or was holder of",
+          "Relation types": "Management relations"
         }
       },
       {
@@ -7303,6 +8361,24 @@
         },
         "es": {
           "Name": "is or was holder of",
+          "Inverse": {
+            "ID": "RiC-R039i",
+            "Name": "has or had holder"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a record resource or instantiation that the agent holds.",
+          "Scope Notes": "",
+          "Examples": "The National Archive of Spain [corporate body] is or was holder of Junta Central||Suprema Gubernativa del Reino (Siglo XIX) [record set]. [es]||Arquivo Nacional (Brasil) [corporate body] is or was holder of Departamento Nacional do Povoamento [record set]. [pt]||Departamento Nacional do Povoamento [record set] has or had holder Arquivo||Nacional (Brasil) [corporate body]. [pt]",
+          "Broader relations": "RiC-R038 is or was manager of",
+          "Narrower relations": "None",
+          "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Aufbewahrung-Recordressource/Instanz",
           "Inverse": {
             "ID": "RiC-R039i",
             "Name": "has or had holder"
@@ -7396,6 +8472,24 @@
           "Broader relations": "RiC-R036 has or had authority over",
           "Narrower relations": "None",
           "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Urheberschaft-Recordressource/Instanz",
+          "Inverse": {
+            "ID": "RiC-R040i",
+            "Name": "has or had intellectual property rights holder"
+          },
+          "DomainRange": {
+            "Domain": "Group, Person or Position",
+            "Range": "Record Resource or Instantiation"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a record resource or instantiation in which the agent has or had some intellectual property rights.",
+          "Scope Notes": "",
+          "Examples": "Los herederos de Pablo Pérez-Mínguez [group] is or was holder of intellectual property rights of el Archivo Fotográfico Pablo Pérez-Mínguez [record resource]. [es]||Ruy Alexandre Guerra Coelho Pereira [person] is or was holder of intellectual property rights of Ruy Guerra [record set]. [pt]||Ruy Guerra [record set] has or had intellectual property rights holder Ruy Alexandre||Guerra Coelho Pereira [person]. [pt]",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "None",
+          "Relation types": "Management relations"
         }
       },
       {
@@ -7420,6 +8514,24 @@
         },
         "es": {
           "Name": "has or had intellectual property rights holder",
+          "Inverse": {
+            "ID": "RiC-R040",
+            "Name": "is or was holder of intellectual  property rights of"
+          },
+          "DomainRange": {
+            "Domain": "Record Resource or Instantiation",
+            "Range": "Group, Person or Position"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to a record resource or instantiation in which the agent has or had some intellectual property rights.",
+          "Scope Notes": "",
+          "Examples": "Los herederos de Pablo Pérez-Mínguez [group] is or was holder of intellectual property rights of el Archivo Fotográfico Pablo Pérez-Mínguez [record resource]. [es]||Ruy Alexandre Guerra Coelho Pereira [person] is or was holder of intellectual property rights of Ruy Guerra [record set]. [pt]||Ruy Guerra [record set] has or had intellectual property rights holder Ruy Alexandre||Guerra Coelho Pereira [person]. [pt]",
+          "Broader relations": "RiC-R036 has or had authority over",
+          "Narrower relations": "None",
+          "Relation types": "Management relations"
+        },
+        "de": {
+          "Name": "Akteur-Urheberschaft-Recordressource/Instanz",
           "Inverse": {
             "ID": "RiC-R040",
             "Name": "is or was holder of intellectual  property rights of"
@@ -7474,6 +8586,24 @@
           "Broader relations": "RiC-R036 has or had authority over RiC-R045 has or had subordinate",
           "Narrower relations": "RiC-R042 is or was leader of",
           "Relation types": "Management relations Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Kontrolle-Akteur",
+          "Inverse": {
+            "ID": "RiC-R041i",
+            "Name": "has or had controller"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to another agent it controls or controlled.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R036 has or had authority over RiC-R045 has or had subordinate",
+          "Narrower relations": "RiC-R042 is or was leader of",
+          "Relation types": "Management relations Agent to agent relations"
         }
       },
       {
@@ -7498,6 +8628,24 @@
         },
         "es": {
           "Name": "has or had controller",
+          "Inverse": {
+            "ID": "RiC-R041",
+            "Name": "is or was controller of"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to another agent it controls or controlled.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R036 has or had authority over RiC-R045 has or had subordinate",
+          "Narrower relations": "RiC-R042 is or was leader of",
+          "Relation types": "Management relations Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Kontrolle-Akteur",
           "Inverse": {
             "ID": "RiC-R041",
             "Name": "is or was controller of"
@@ -7552,6 +8700,24 @@
           "Broader relations": "RiC-R041 is or was controller of",
           "Narrower relations": "None",
           "Relation types": "Management relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Führung-Person",
+          "Inverse": {
+            "ID": "RiC-R042i",
+            "Name": "has or had leader"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Group"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to the group the person leads or led in the past.",
+          "Scope Notes": "",
+          "Examples": "Jean Favier (1932-2014) is or was leader of la Bibliothèque nationale de France. Attribut Date de cette relation: 1994/1997. Attribut Description de cette relation: Jean Favier fut président de la BnF. [fr]||João Cândido is or was leader of Revolta da Chibata. [pt]||Revolta da Chibata has or had leader João Cândido. [pt]",
+          "Broader relations": "RiC-R041 is or was controller of",
+          "Narrower relations": "None",
+          "Relation types": "Management relations||Agent to agent relations"
         }
       },
       {
@@ -7591,6 +8757,24 @@
           "Broader relations": "RiC-R041 is or was controller of",
           "Narrower relations": "None",
           "Relation types": "Management relations||Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Führung-Person",
+          "Inverse": {
+            "ID": "RiC-R042",
+            "Name": "is or was leader of"
+          },
+          "DomainRange": {
+            "Domain": "Group",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to the group the person leads or led in the past.",
+          "Scope Notes": "",
+          "Examples": "Jean Favier (1932-2014) is or was leader of la Bibliothèque nationale de France. Attribut Date de cette relation: 1994/1997. Attribut Description de cette relation: Jean Favier fut président de la BnF. [fr]||João Cândido is or was leader of Revolta da Chibata. [pt]||Revolta da Chibata has or had leader João Cândido. [pt]",
+          "Broader relations": "RiC-R041 is or was controller of",
+          "Narrower relations": "None",
+          "Relation types": "Management relations||Agent to agent relations"
         }
       },
       {
@@ -7615,6 +8799,24 @@
         },
         "es": {
           "Name": "is agent associated with agent",
+          "Inverse": {
+            "ID": "RiC-R044i",
+            "Name": "is agent associated with agent"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two agents.||||This relation is symmetric.",
+          "Scope Notes": "Use only if it is not possible to specify a narrower agent to agent relation, for example has or had work relation with.",
+          "Examples": "El Ayuntamiento de Soria [corporate body] is agent associated with agent la Junta de Castilla y León [corporate body]. [es]||Ministro de Estado da Justiça e Segurança Pública [corporate body] is agent associated with agent presidente da República Federativa do Brasil [position]. [pt]||Presidente da República Federativa do Brasil [position] is agent associated with agent ministro de Estado da Justiça e Segurança Pública [corporate body]. [pt]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R045 has or had subordinate||RiC-R045i is or was subordinate to||RiC-R046 has or had work relation with||RiC-R016 has successor||RiC-R016i is successor of||RiC-R047 has family association with||RiC-R050 knows of||RiC-R050i known by||RiC-R051 knows||RiC-R054 occupies or occupied||RiC-R054i is or was occupied by||RiC-R055 has or had member||RiC-R055i is or was member of||RiC-R056 exists or existed in||RiC-R056i has or had position",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Akteur",
           "Inverse": {
             "ID": "RiC-R044i",
             "Name": "is agent associated with agent"
@@ -7708,6 +8910,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "RiC-R005 has or had subdivision||RiC-R041 is or was controller of||",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Hierarchie-Akteur",
+          "Inverse": {
+            "ID": "RiC-R045i",
+            "Name": "is or was subordinate to"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to an agent that is hierarchically inferior.",
+          "Scope Notes": "The hierarchical relation can be an authority relation, or a whole/part relation between two agents.",
+          "Examples": "La Real Audiencia y Chancillería de Valladolid [corporate body] has or had subordinate la Sala Primera de lo Civil [corporate body]. [es]||Presidente da República Federativa do Brasil [position] has or had subordinate ministro de Estado da Justiça e Segurança Pública [corporate body]. [pt]||Ministro de Estado da Justiça e Segurança Pública [corporate body] is or was subordinate to Presidente da República Federativa do Brasil [position]. [pt]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R005 has or had subdivision||RiC-R041 is or was controller of||",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -7747,6 +8967,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "RiC-R005 has or had subdivision||RiC-R041 is or was controller of||",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Hierarchie-Akteur",
+          "Inverse": {
+            "ID": "RiC-R045",
+            "Name": "has or had subordinate"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an agent to an agent that is hierarchically inferior.",
+          "Scope Notes": "The hierarchical relation can be an authority relation, or a whole/part relation between two agents.",
+          "Examples": "La Real Audiencia y Chancillería de Valladolid [corporate body] has or had subordinate la Sala Primera de lo Civil [corporate body]. [es]||Presidente da República Federativa do Brasil [position] has or had subordinate ministro de Estado da Justiça e Segurança Pública [corporate body]. [pt]||Ministro de Estado da Justiça e Segurança Pública [corporate body] is or was subordinate to Presidente da República Federativa do Brasil [position]. [pt]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R005 has or had subdivision||RiC-R041 is or was controller of||",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -7771,6 +9009,24 @@
         },
         "es": {
           "Name": "has or had work relation with",
+          "Inverse": {
+            "ID": "RiC-R046i",
+            "Name": "has or had work relation with"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two agents that have or had some type of work relation in the course of their activities.||This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Presidente da República Federativa do Brasil [position] has or had work relation with ministro de Estado da Justiça e Segurança Pública [position]. [pt]||Ministro de Estado da Justiça e Segurança Pública [position] has or had work relation with Presidente da República Federativa do Brasil [position]. [pt]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Akteur-Arbeit-Akteur",
           "Inverse": {
             "ID": "RiC-R046i",
             "Name": "has or had work relation with"
@@ -7864,6 +9120,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "RiC-R017 has descendant||RiC-R017i has ancestor||RiC-R048 has sibling||RiC-R049 has or had spouse",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Familie-Person",
+          "Inverse": {
+            "ID": "RiC-R047i",
+            "Name": "has  family association with"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who have some type of family link, i.e., belong to the same family.||This relation is symmetric.",
+          "Scope Notes": "Use RiC-R055 has or had member for connecting a family and a person.",
+          "Examples": "Fernando VI (Rey de España) [person] has family association with Isabel II (Reina de España) [person]). [es]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R017 has descendant||RiC-R017i has ancestor||RiC-R048 has sibling||RiC-R049 has or had spouse",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -7888,6 +9162,24 @@
         },
         "es": {
           "Name": "has  family association with",
+          "Inverse": {
+            "ID": "RiC-R047",
+            "Name": "has family association with"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who have some type of family link, i.e., belong to the same family.||This relation is symmetric.",
+          "Scope Notes": "Use RiC-R055 has or had member for connecting a family and a person.",
+          "Examples": "Fernando VI (Rey de España) [person] has family association with Isabel II (Reina de España) [person]). [es]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R017 has descendant||RiC-R017i has ancestor||RiC-R048 has sibling||RiC-R049 has or had spouse",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Familie-Person",
           "Inverse": {
             "ID": "RiC-R047",
             "Name": "has family association with"
@@ -7942,6 +9234,24 @@
           "Broader relations": "RiC-R047 has family association with",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Geschwister",
+          "Inverse": {
+            "ID": "RiC-R048i",
+            "Name": "has sibling"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who are siblings.||This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Francisco Franco Bahamonde (1892-1975) [person]\nhas sibling Ramón Franco Bahamonde (1896-1938) [person]). [es]",
+          "Broader relations": "RiC-R047 has family association with",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -7966,6 +9276,24 @@
         },
         "es": {
           "Name": "has sibling",
+          "Inverse": {
+            "ID": "RiC-R048",
+            "Name": "has sibling"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who are siblings.||This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Francisco Franco Bahamonde (1892-1975) [person]\nhas sibling Ramón Franco Bahamonde (1896-1938) [person]). [es]",
+          "Broader relations": "RiC-R047 has family association with",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Geschwister",
           "Inverse": {
             "ID": "RiC-R048",
             "Name": "has sibling"
@@ -8020,6 +9348,24 @@
           "Broader relations": "RiC-R047 has family association with",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Ehepartner",
+          "Inverse": {
+            "ID": "RiC-R049i",
+            "Name": "has or had spouse"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who are or were married. This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Margarita de Borbón-Parma (1847-1893) [person]\nhas or had spouse Carlos María de Borbón y Austria-Este (1848-1909) [person]. [es]",
+          "Broader relations": "RiC-R047 has family association with",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8044,6 +9390,24 @@
         },
         "es": {
           "Name": "has or had spouse",
+          "Inverse": {
+            "ID": "RiC-R049",
+            "Name": "has or had spouse"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who are or were married. This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Margarita de Borbón-Parma (1847-1893) [person]\nhas or had spouse Carlos María de Borbón y Austria-Este (1848-1909) [person]. [es]",
+          "Broader relations": "RiC-R047 has family association with",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Ehepartner",
           "Inverse": {
             "ID": "RiC-R049",
             "Name": "has or had spouse"
@@ -8098,6 +9462,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Kenntnis-Person",
+          "Inverse": {
+            "ID": "RiC-R050i",
+            "Name": "known  by"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to another person they have some knowledge of through time or space.",
+          "Scope Notes": "",
+          "Examples": "Maimonides (1138-1204) knows of Aristotle (384–322 BCE)",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8137,6 +9519,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Kenntnis-Person",
+          "Inverse": {
+            "ID": "RiC-R050",
+            "Name": "knows of"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to another person they have some knowledge of through time or space.",
+          "Scope Notes": "",
+          "Examples": "Maimonides (1138-1204) knows of Aristotle (384–322 BCE)",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8161,6 +9561,24 @@
         },
         "es": {
           "Name": "knows",
+          "Inverse": {
+            "ID": "RiC-R051i",
+            "Name": "knows"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who directly know each other during their existence.||This relation is symmetric.",
+          "Scope Notes": "The relation implies that the two persons met or at least corresponded with each other.",
+          "Examples": "Oppenheimer, J. Robert knows Groves Jr., Leslie R.",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "RiC-R052 has or had correspondent||RiC-R053 has or had teacher||RiC-R053i has or had student",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Bekanntschaft-Person",
           "Inverse": {
             "ID": "RiC-R051i",
             "Name": "knows"
@@ -8254,6 +9672,24 @@
           "Broader relations": "RiC-R051 knows",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Korrespondenz-Person",
+          "Inverse": {
+            "ID": "RiC-R052i",
+            "Name": "has or had correspondent"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects two persons who correspond or have corresponded with each other.||This relation is symmetric.",
+          "Scope Notes": "",
+          "Examples": "Ernest Hemingway has or had correspondent Milford J. Baker [en]",
+          "Broader relations": "RiC-R051 knows",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8332,6 +9768,24 @@
           "Broader relations": "RiC-R051 knows",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Student",
+          "Inverse": {
+            "ID": "RiC-R053i",
+            "Name": "has or had student"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to another person who is or was their teacher.",
+          "Scope Notes": "",
+          "Examples": "Beatriz Galindo, la Latina (c.1465-1535) has or had student Isabel I la Católica (14741504). [es]",
+          "Broader relations": "RiC-R051 knows",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8356,6 +9810,24 @@
         },
         "es": {
           "Name": "has or had student",
+          "Inverse": {
+            "ID": "RiC-R053",
+            "Name": "has or had teacher"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to another person who is or was their teacher.",
+          "Scope Notes": "",
+          "Examples": "Beatriz Galindo, la Latina (c.1465-1535) has or had student Isabel I la Católica (14741504). [es]",
+          "Broader relations": "RiC-R051 knows",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Student",
           "Inverse": {
             "ID": "RiC-R053",
             "Name": "has or had teacher"
@@ -8410,6 +9882,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Position",
+          "Inverse": {
+            "ID": "RiC-R054i",
+            "Name": "is  or was occupied by"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Position"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to a position they occupy or occupied.",
+          "Scope Notes": "",
+          "Examples": "Pío Cabanillas Gallas (1923-1991) occupies or occupied el cargo de Ministro de Cultura (fechas de la relación: 1977-1979). [es]||George McGovern occupies or occupied the office of United States Senator from 1963-1980 [en]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8434,6 +9924,24 @@
         },
         "es": {
           "Name": "is  or was occupied by",
+          "Inverse": {
+            "ID": "RiC-R054",
+            "Name": "occupies  or occupied"
+          },
+          "DomainRange": {
+            "Domain": "Position",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a person to a position they occupy or occupied.",
+          "Scope Notes": "",
+          "Examples": "Pío Cabanillas Gallas (1923-1991) occupies or occupied el cargo de Ministro de Cultura (fechas de la relación: 1977-1979). [es]||George McGovern occupies or occupied the office of United States Senator from 1963-1980 [en]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Person-Position",
           "Inverse": {
             "ID": "RiC-R054",
             "Name": "occupies  or occupied"
@@ -8488,6 +9996,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Gruppe-Mitgliedschaft-Person",
+          "Inverse": {
+            "ID": "RiC-R055i",
+            "Name": "is  or was member of"
+          },
+          "DomainRange": {
+            "Domain": "Group",
+            "Range": "Person"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a group to a person who is or was a member of that group.",
+          "Scope Notes": "",
+          "Examples": "Le Conseil constitutionnel français [corporate\nbody] has or had member Simone Veil . Attribut Date de cette relation: 1998/2007. [fr]||Francisco Cabarrús (1752-1810) [person] is or was member of el Ministerio del Interior [corporate body]. Fecha de la relación: 1808. [es]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8512,6 +10038,24 @@
         },
         "es": {
           "Name": "is  or was member of",
+          "Inverse": {
+            "ID": "RiC-R055",
+            "Name": "has or  had member"
+          },
+          "DomainRange": {
+            "Domain": "Person",
+            "Range": "Group"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a group to a person who is or was a member of that group.",
+          "Scope Notes": "",
+          "Examples": "Le Conseil constitutionnel français [corporate\nbody] has or had member Simone Veil . Attribut Date de cette relation: 1998/2007. [fr]||Francisco Cabarrús (1752-1810) [person] is or was member of el Ministerio del Interior [corporate body]. Fecha de la relación: 1808. [es]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Gruppe-Mitgliedschaft-Person",
           "Inverse": {
             "ID": "RiC-R055",
             "Name": "has or  had member"
@@ -8566,6 +10110,24 @@
           "Broader relations": "RiC-R044 is agent associated with agent",
           "Narrower relations": "None",
           "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Position-Gruppe",
+          "Inverse": {
+            "ID": "RiC-R056i",
+            "Name": "has or had position"
+          },
+          "DomainRange": {
+            "Domain": "Position",
+            "Range": "Group"
+          },
+          "Cardinality": "M to 1",
+          "Definition": "Connects a position to a group in which that position exists or existed, or that is defined by that group's organizational structure.",
+          "Scope Notes": "",
+          "Examples": "Director of Food for Peace exists or existed in Food for Peace since 1961. [en]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
         }
       },
       {
@@ -8590,6 +10152,24 @@
         },
         "es": {
           "Name": "has or had position",
+          "Inverse": {
+            "ID": "RiC-R056",
+            "Name": "exists or existed in"
+          },
+          "DomainRange": {
+            "Domain": "Group",
+            "Range": "Position"
+          },
+          "Cardinality": "M to 1",
+          "Definition": "Connects a position to a group in which that position exists or existed, or that is defined by that group's organizational structure.",
+          "Scope Notes": "",
+          "Examples": "Director of Food for Peace exists or existed in Food for Peace since 1961. [en]",
+          "Broader relations": "RiC-R044 is agent associated with agent",
+          "Narrower relations": "None",
+          "Relation types": "Agent to agent relations"
+        },
+        "de": {
+          "Name": "Position-Gruppe",
           "Inverse": {
             "ID": "RiC-R056",
             "Name": "exists or existed in"
@@ -8644,6 +10224,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R006 has or had subevent||RiC-R006i is or was subevent of||RiC-R058 has or had participant||RiC-R061 results or resulted in||RiC-R084i occurred at date (inverse of RiC-R084 is date of occurrence of)",
           "Relation types": "Event relations"
+        },
+        "de": {
+          "Name": "Ereignis-Ding",
+          "Inverse": {
+            "ID": "RiC-R057i",
+            "Name": "is associated with event"
+          },
+          "DomainRange": {
+            "Domain": "Event",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an event to a thing that is associated with the existence and lifecycle of the event.",
+          "Scope Notes": "Use to connect an event and an entity only if it is not possible to specify a narrower event relation, for example has or had participant.",
+          "Examples": "The Princeton Antioch Excavations is event associated with Princeton University Dept. of Art and Architecture Antioch Excavation Records [record set] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R006 has or had subevent||RiC-R006i is or was subevent of||RiC-R058 has or had participant||RiC-R061 results or resulted in||RiC-R084i occurred at date (inverse of RiC-R084 is date of occurrence of)",
+          "Relation types": "Event relations"
         }
       },
       {
@@ -8668,6 +10266,24 @@
         },
         "es": {
           "Name": "is associated with event",
+          "Inverse": {
+            "ID": "RiC-R057",
+            "Name": "is event associated with"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Event"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an event to a thing that is associated with the existence and lifecycle of the event.",
+          "Scope Notes": "Use to connect an event and an entity only if it is not possible to specify a narrower event relation, for example has or had participant.",
+          "Examples": "The Princeton Antioch Excavations is event associated with Princeton University Dept. of Art and Architecture Antioch Excavation Records [record set] [en]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R006 has or had subevent||RiC-R006i is or was subevent of||RiC-R058 has or had participant||RiC-R061 results or resulted in||RiC-R084i occurred at date (inverse of RiC-R084 is date of occurrence of)",
+          "Relation types": "Event relations"
+        },
+        "de": {
+          "Name": "Ereignis-Ding",
           "Inverse": {
             "ID": "RiC-R057",
             "Name": "is event associated with"
@@ -8878,6 +10494,24 @@
           "Broader relations": "RiC-R058 has or had participant",
           "Narrower relations": "None",
           "Relation types": "Event relations"
+        },
+        "de": {
+          "Name": "Aktivität-Ausführung-Akteur",
+          "Inverse": {
+            "ID": "RiC-R060i",
+            "Name": "performs or performed"
+          },
+          "DomainRange": {
+            "Domain": "Activity",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an activity to an agent that performs or performed the activity.",
+          "Scope Notes": "",
+          "Examples": "Town planning is or was\nperformed by City hall of Madrid [corporate body]. [en]",
+          "Broader relations": "RiC-R058 has or had participant",
+          "Narrower relations": "None",
+          "Relation types": "Event relations"
         }
       },
       {
@@ -8902,6 +10536,24 @@
         },
         "es": {
           "Name": "performs or performed",
+          "Inverse": {
+            "ID": "RiC-R060",
+            "Name": "is or was performed by"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Activity"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects an activity to an agent that performs or performed the activity.",
+          "Scope Notes": "",
+          "Examples": "Town planning is or was\nperformed by City hall of Madrid [corporate body]. [en]",
+          "Broader relations": "RiC-R058 has or had participant",
+          "Narrower relations": "None",
+          "Relation types": "Event relations"
+        },
+        "de": {
+          "Name": "Aktivität-Ausführung-Akteur",
           "Inverse": {
             "ID": "RiC-R060",
             "Name": "is or was performed by"
@@ -9034,6 +10686,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R063 regulates or regulated||RiC-R064 is or was expressed by||RiC-R065 issued by||RiC-R066 is or was enforced by||RiC-R067 authorizes",
           "Relation types": "Rule relations"
+        },
+        "de": {
+          "Name": "Regel-Ding",
+          "Inverse": {
+            "ID": "RiC-R062i",
+            "Name": "is associated with rule"
+          },
+          "DomainRange": {
+            "Domain": "Rule",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a rule to a thing that is associated with the rule.",
+          "Scope Notes": "Use only if it is not possible to specify a narrower rule relation, for example, regulates or regulated.",
+          "Examples": "",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R063 regulates or regulated||RiC-R064 is or was expressed by||RiC-R065 issued by||RiC-R066 is or was enforced by||RiC-R067 authorizes",
+          "Relation types": "Rule relations"
         }
       },
       {
@@ -9058,6 +10728,24 @@
         },
         "es": {
           "Name": "is associated with rule",
+          "Inverse": {
+            "ID": "RiC-R062",
+            "Name": "is rule associated with"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Rule"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a rule to a thing that is associated with the rule.",
+          "Scope Notes": "Use only if it is not possible to specify a narrower rule relation, for example, regulates or regulated.",
+          "Examples": "",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R063 regulates or regulated||RiC-R064 is or was expressed by||RiC-R065 issued by||RiC-R066 is or was enforced by||RiC-R067 authorizes",
+          "Relation types": "Rule relations"
+        },
+        "de": {
+          "Name": "Regel-Ding",
           "Inverse": {
             "ID": "RiC-R062",
             "Name": "is rule associated with"
@@ -9424,6 +11112,24 @@
           "Broader relations": "RiC-R062 is rule associated with",
           "Narrower relations": "None",
           "Relation types": "Rule relations"
+        },
+        "de": {
+          "Name": "Mandat-Akteur",
+          "Inverse": {
+            "ID": "RiC-R067i",
+            "Name": "authorized by"
+          },
+          "DomainRange": {
+            "Domain": "Mandate",
+            "Range": "Agent"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a mandate to an agent to which the mandate gives the authority or competencies to act.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R062 is rule associated with",
+          "Narrower relations": "None",
+          "Relation types": "Rule relations"
         }
       },
       {
@@ -9448,6 +11154,24 @@
         },
         "es": {
           "Name": "authorized by",
+          "Inverse": {
+            "ID": "RiC-R067",
+            "Name": "authorizes"
+          },
+          "DomainRange": {
+            "Domain": "Agent",
+            "Range": "Mandate"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a mandate to an agent to which the mandate gives the authority or competencies to act.",
+          "Scope Notes": "",
+          "Examples": "",
+          "Broader relations": "RiC-R062 is rule associated with",
+          "Narrower relations": "None",
+          "Relation types": "Rule relations"
+        },
+        "de": {
+          "Name": "Mandat-Akteur",
           "Inverse": {
             "ID": "RiC-R067",
             "Name": "authorizes"
@@ -9970,6 +11694,24 @@
           "Broader relations": "RiC-R001 is related to",
           "Narrower relations": "RiC-R007 contains or contained||RiC-R007i is or was contained by||RiC-R075 is or was location of||RiC-R076 is or was jurisdiction of RiC-R077 is or was adjacent to||RiC-R078 overlaps or overlapped",
           "Relation types": "Spatial relations"
+        },
+        "de": {
+          "Name": "Geografikum-Ding",
+          "Inverse": {
+            "ID": "RiC-R074i",
+            "Name": "is associated with place"
+          },
+          "DomainRange": {
+            "Domain": "Place",
+            "Range": "Thing"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a place to a thing with whose existence and lifecycle the place is associated.",
+          "Scope Notes": "Use to connect a place to an entity only if it is not possible to specify a narrower spatial relation, for example, is or was location of.",
+          "Examples": "El Mar Jónico is place associated with la Batalla de Lepanto (1571) [thing]). [es]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R007 contains or contained||RiC-R007i is or was contained by||RiC-R075 is or was location of||RiC-R076 is or was jurisdiction of RiC-R077 is or was adjacent to||RiC-R078 overlaps or overlapped",
+          "Relation types": "Spatial relations"
         }
       },
       {
@@ -9994,6 +11736,24 @@
         },
         "es": {
           "Name": "is associated with place",
+          "Inverse": {
+            "ID": "RiC-R074",
+            "Name": "is place associated with"
+          },
+          "DomainRange": {
+            "Domain": "Thing",
+            "Range": "Place"
+          },
+          "Cardinality": "M to M",
+          "Definition": "Connects a place to a thing with whose existence and lifecycle the place is associated.",
+          "Scope Notes": "Use to connect a place to an entity only if it is not possible to specify a narrower spatial relation, for example, is or was location of.",
+          "Examples": "El Mar Jónico is place associated with la Batalla de Lepanto (1571) [thing]). [es]",
+          "Broader relations": "RiC-R001 is related to",
+          "Narrower relations": "RiC-R007 contains or contained||RiC-R007i is or was contained by||RiC-R075 is or was location of||RiC-R076 is or was jurisdiction of RiC-R077 is or was adjacent to||RiC-R078 overlaps or overlapped",
+          "Relation types": "Spatial relations"
+        },
+        "de": {
+          "Name": "Geografikum-Ding",
           "Inverse": {
             "ID": "RiC-R074",
             "Name": "is place associated with"
@@ -10360,6 +12120,24 @@
           "Broader relations": "RiC-R027 has creator",
           "Narrower relations": "None",
           "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Record-Autor-Akteur",
+          "Inverse": {
+            "ID": "RiC-R079i",
+            "Name": "is  author of"
+          },
+          "DomainRange": {
+            "Domain": "Record",
+            "Range": "Person or Group or Position"
+          },
+          "Cardinality": "",
+          "Definition": "Connects a record to the group, person or position that is responsible for conceiving and formulating the information contained in the record.",
+          "Scope Notes": "To be used for a person, group or position that makes any contribution to the content of a record.||Includes the person, group or position in whose name or by whose command the content may have been formulated and first instantiated (for example the person who signed the record).",
+          "Examples": "Letter from Ernest Hemingway to Milford J. Baker has author Ernest Hemingway [person]. [en]",
+          "Broader relations": "RiC-R027 has creator",
+          "Narrower relations": "None",
+          "Relation types": "Provenance relations"
         }
       },
       {
@@ -10384,6 +12162,24 @@
         },
         "es": {
           "Name": "is  author of",
+          "Inverse": {
+            "ID": "RiC-R079",
+            "Name": "has author"
+          },
+          "DomainRange": {
+            "Domain": "Person or Group or Position",
+            "Range": "Record"
+          },
+          "Cardinality": "",
+          "Definition": "Connects a record to the group, person or position that is responsible for conceiving and formulating the information contained in the record.",
+          "Scope Notes": "To be used for a person, group or position that makes any contribution to the content of a record.||Includes the person, group or position in whose name or by whose command the content may have been formulated and first instantiated (for example the person who signed the record).",
+          "Examples": "Letter from Ernest Hemingway to Milford J. Baker has author Ernest Hemingway [person]. [en]",
+          "Broader relations": "RiC-R027 has creator",
+          "Narrower relations": "None",
+          "Relation types": "Provenance relations"
+        },
+        "de": {
+          "Name": "Record-Autor-Akteur",
           "Inverse": {
             "ID": "RiC-R079",
             "Name": "has author"
