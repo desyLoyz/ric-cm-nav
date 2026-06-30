@@ -1,7 +1,7 @@
 import data from "./stores/store_data.json";
 import * as _ from "lodash";
 
-const SUPPORTED_LOCALES = ["en", "es"];
+const SUPPORTED_LOCALES = ["en", "es", "de"];
 const DEFAULT_LOCALE = "en";
 const LOCALE_STORAGE_KEY = "ric_cm_locale";
 
@@ -37,7 +37,7 @@ function localized(multilingualValue, locale) {
   if (typeof multilingualValue !== "object" || Array.isArray(multilingualValue)) {
     return multilingualValue;
   }
-  if (Object.prototype.hasOwnProperty.call(multilingualValue, "en") || Object.prototype.hasOwnProperty.call(multilingualValue, "es")) {
+  if (Object.prototype.hasOwnProperty.call(multilingualValue, "en") || Object.prototype.hasOwnProperty.call(multilingualValue, "es") || Object.prototype.hasOwnProperty.call(multilingualValue, "de")) {
     return multilingualValue[locale] ?? multilingualValue[DEFAULT_LOCALE] ?? "";
   }
   return multilingualValue;

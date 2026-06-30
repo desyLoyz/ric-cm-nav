@@ -112,5 +112,62 @@
       "textNodeShort": "Nodo de texto",
       "textNodeLabel": "Etiqueta del nodo de texto"
     }
+  },
+  "de": {
+    "appTitle": "RiC-CM NavTool",
+    "nav": {
+      "entities": "Entitäten",
+      "attributes": "Attribute",
+      "relations": "Relationen",
+      "relationAttributes": "Relationsattribute",
+      "modelingPlayground": "Modellierungsarbeitsbereich",
+      "language": "Sprache"
+    },
+    "common": {
+      "code": "Code",
+      "name": "Name",
+      "description": "Beschreibung",
+      "definition": "Definition",
+      "scopeNotes": "Geltungsbereich",
+      "scope": "Geltungsbereich",
+      "examples": "Beispiele",
+      "comments": "Kommentare",
+      "specifications": "Spezifikationen",
+      "repeatability": "Wiederholbarkeit",
+      "extensibility": "Erweiterbarkeit",
+      "valueSchema": "Werteschema",
+      "domain": "Domäne",
+      "range": "Wertebereich",
+      "close": "Schließen",
+      "searchCode": "Code suchen",
+      "searchName": "Name suchen",
+      "searchDescription": "Beschreibung suchen"
+    },
+    "about": {
+      "title": "Über RiC-CM NavTool",
+      "description": "RiC-CM NavTool ermöglicht das Durchsuchen von RiC-CM-Entitäten, Attributen, Relationen und Relationsattributen.",
+      "basedOn": "Diese App basiert auf",
+      "creator": "Ersteller",
+      "license": "Lizenz"
+    },
+    "cards": {
+      "entity": "Entitätskarte",
+      "attribute": "Attributkarte",
+      "relation": "Relationskarte",
+      "relationAttribute": "Relationsattributkarte"
+    },
+    "entitiesView": { "title": "Entitäten", "hierarchy": "Hierarchie der Entitäten" },
+    "attributesView": { "title": "Attribute", "searchEntities": "Entitäten suchen" },
+    "relationsView": { "title": "Relationen", "searchDomain": "Domäne suchen", "searchRange": "Wertebereich suchen" },
+    "relationAttributesView": { "title": "Relationsattribute", "searchValueSchema": "Werteschema suchen" },
+    "entityCard": { "attributes": "Attribute", "relations": "Relationen", "descendants": "Nachfahren", "asType": "Als {type}", "relationTableToggle": "Relationstabelle umschalten", "searchType": "{type} suchen" },
+    "attributeCard": { "domainEntities": "Domäne/Entitäten" },
+    "relationCard": { "cardinality": "Kardinalität", "broaderRelations": "Übergeordnete Relationen", "narrowerRelations": "Untergeordnete Relationen", "inverse": "Invers" },
+    "playground": {
+      "title": "Modellierungsarbeitsbereich",
+      "textNodeDefault": "Textknoten",
+      "textNodeShort": "Textknoten",
+      "textNodeLabel": "Textknoten-Bezeichnung"
+    }
   }
 }
