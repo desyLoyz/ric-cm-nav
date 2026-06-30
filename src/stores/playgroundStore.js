@@ -78,6 +78,11 @@ export const usePlaygroundStore = defineStore("playground", () => {
     if (isRestoring.value) return;
 
     const snapshot = snapshotGraphState();
+    // Skip if snapshot is identical to current head (e.g. no-op drag-end)
+    if (historyIndex.value >= 0 && history.value.length > 0) {
+      if (JSON.stringify(history.value[historyIndex.value]) === JSON.stringify(snapshot)) return;
+    }
+
     if (historyIndex.value < history.value.length - 1) {
       history.value = history.value.slice(0, historyIndex.value + 1);
     }
@@ -91,6 +96,9 @@ export const usePlaygroundStore = defineStore("playground", () => {
   }
 
   function loadFromStorage() {
+    // Store is a singleton — skip reload if already initialised so undo/redo survives tab switches.
+    if (hasLoaded.value) return true;
+
     if (typeof window === "undefined" || !window.localStorage) {
       resetHistoryToCurrent();
       hasLoaded.value = true;
@@ -108,7 +116,18 @@ export const usePlaygroundStore = defineStore("playground", () => {
       const parsed = JSON.parse(raw);
       const graphState = parsed?.graph || parsed;
       applyGraphState(graphState);
-      resetHistoryToCurrent();
+      // Restore persisted history so undo/redo also survives page reloads.
+      if (Array.isArray(parsed?.history) && parsed.history.length > 0) {
+        history.value = parsed.history;
+        historyIndex.value =
+          typeof parsed.historyIndex === "number" &&
+          parsed.historyIndex >= 0 &&
+          parsed.historyIndex < parsed.history.length
+            ? parsed.historyIndex
+            : parsed.history.length - 1;
+      } else {
+        resetHistoryToCurrent();
+      }
       hasLoaded.value = true;
       return true;
     } catch (_error) {
@@ -127,6 +146,8 @@ export const usePlaygroundStore = defineStore("playground", () => {
         JSON.stringify({
           version: 1,
           graph: snapshotGraphState(),
+          history: history.value,
+          historyIndex: historyIndex.value,
         })
       );
     } catch (_error) {
