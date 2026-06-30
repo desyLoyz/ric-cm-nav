@@ -1,10 +1,12 @@
 <script setup>
 import { useMainStore } from '@/stores/store'
+import { useLabels } from '@/composables/useLabels'
 import { computed, reactive, ref, watchEffect } from "vue";
 import * as _ from "lodash";
 
 // access the `store` variable anywhere in the component ✨
 const store = useMainStore()
+const { t } = useLabels()
 const rel_type_inv = {
   "Domain": "Range",
   "Range": "Domain",
@@ -133,7 +135,7 @@ const activeOppositeType = computed(() => {
             <div class="list-group">
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Definition</h5>
+                  <h5 class="mb-1">{{ t("common.definition") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getEntityInfo).entity.definition.split('||')  ">
                   {{ i }}
@@ -141,7 +143,7 @@ const activeOppositeType = computed(() => {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Scope Notes</h5>
+                  <h5 class="mb-1">{{ t("common.scopeNotes") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getEntityInfo).entity.scopenotes.split('||')   ">
                   {{ i }}
@@ -149,7 +151,7 @@ const activeOppositeType = computed(() => {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Examples</h5>
+                  <h5 class="mb-1">{{ t("common.examples") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getEntityInfo).entity.examples.split('||')    ">
                   {{ i }}
@@ -157,7 +159,7 @@ const activeOppositeType = computed(() => {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Comments</h5>
+                  <h5 class="mb-1">{{ t("common.comments") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getEntityInfo).entity.comments.split('||')     ">
                   {{ i }}
@@ -171,7 +173,7 @@ const activeOppositeType = computed(() => {
             <div class="list-group">
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Attributes</h5>
+                  <h5 class="mb-1">{{ t("entityCard.attributes") }}</h5>
                 </div>
                 <div class="overflow-auto maxheight">
                   <div class="attribute-tree">
@@ -201,10 +203,10 @@ const activeOppositeType = computed(() => {
             <div class="list-group">
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Relations</h5>
+                  <h5 class="mb-1">{{ t("entityCard.relations") }}</h5>
                 </div>
                 <div class="maxheight">
-                  <div class="btn-group btn-group-sm mb-2" role="group" aria-label="Relation table toggle">
+                  <div class="btn-group btn-group-sm mb-2" role="group" :aria-label="t('entityCard.relationTableToggle')">
                     <button v-for="type in relationTypes" type="button" class="btn"
                       :class="activeRelationType === type ? 'btn-primary' : 'btn-outline-primary'"
                       @click="setActiveRelationType(type)">
@@ -212,19 +214,19 @@ const activeOppositeType = computed(() => {
                     </button>
                   </div>
                   <div v-if="relationTypes.length > 0">
-                    <span class="thick"> As {{ activeRelationType.toUpperCase() }}: </span>
+                    <span class="thick">{{ t("entityCard.asType", { type: t(activeRelationType === "Domain" ? "common.domain" : "common.range") }) }}:</span>
                     <div class="relations-table-wrap">
                       <table class="table table-sm relations-table">
                         <thead>
                           <tr>
-                            <th scope="col" class="thickcode">Code</th>
-                            <th scope="col" class="minwidth">Name</th>
-                            <th scope="col" class="minwidth">{{ activeOppositeType }}</th>
+                            <th scope="col" class="thickcode">{{ t("common.code") }}</th>
+                            <th scope="col" class="minwidth">{{ t("common.name") }}</th>
+                            <th scope="col" class="minwidth">{{ t(activeOppositeType === "Domain" ? "common.domain" : "common.range") }}</th>
                           </tr>
                           <tr>
                             <th scope="col">
                               <div class="input-group input-group-sm">
-                                <input type="text" class="form-control form-control-sm" placeholder="Search Code"
+                                <input type="text" class="form-control form-control-sm" :placeholder="t('common.searchCode')"
                                   v-model="relationColumnFilters[activeRelationType].code">
                                 <button class="btn btn-outline-secondary filter-clear-btn" type="button"
                                   @click="clearColumnFilter(activeRelationType, 'code')">
@@ -234,7 +236,7 @@ const activeOppositeType = computed(() => {
                             </th>
                             <th scope="col">
                               <div class="input-group input-group-sm">
-                                <input type="text" class="form-control form-control-sm" placeholder="Search Name"
+                                <input type="text" class="form-control form-control-sm" :placeholder="t('common.searchName')"
                                   v-model="relationColumnFilters[activeRelationType].name">
                                 <button class="btn btn-outline-secondary filter-clear-btn" type="button"
                                   @click="clearColumnFilter(activeRelationType, 'name')">
@@ -245,7 +247,7 @@ const activeOppositeType = computed(() => {
                             <th scope="col">
                               <div class="input-group input-group-sm">
                                 <input type="text" class="form-control form-control-sm"
-                                  :placeholder="`Search ${activeOppositeType}`"
+                                  :placeholder="t('entityCard.searchType', { type: t(activeOppositeType === 'Domain' ? 'common.domain' : 'common.range') })"
                                   v-model="relationColumnFilters[activeRelationType].opposite">
                                 <button class="btn btn-outline-secondary filter-clear-btn" type="button"
                                   @click="clearColumnFilter(activeRelationType, 'opposite')">
@@ -289,7 +291,7 @@ const activeOppositeType = computed(() => {
         <div class="list-group">
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Descendants</h5>
+              <h5 class="mb-1">{{ t("entityCard.descendants") }}</h5>
             </div>
             <div class="overflow-auto fullheight">
               <div class="desc-tree">

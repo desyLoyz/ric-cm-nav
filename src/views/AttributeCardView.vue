@@ -1,9 +1,11 @@
 <script setup>
 import { useMainStore } from '@/stores/store'
+import { useLabels } from '@/composables/useLabels'
 import * as _ from "lodash";
 
 // access the `store` variable anywhere in the component ✨
 const store = useMainStore()
+const { t } = useLabels()
 const rel_type_inv = {
   "Domain": "Range",
   "Range": "Domain",
@@ -27,28 +29,28 @@ const rel_type_inv = {
             <div class="list-group">
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Definition</h5>
+                  <h5 class="mb-1">{{ t("common.definition") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getAttributeInfo).attribute.Definition.split('||') ">
                   {{ i }}</p>
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Scope</h5>
+                  <h5 class="mb-1">{{ t("common.scope") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getAttributeInfo).attribute.Scope.split('||')  ">
                   {{ i }}</p>
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Specifications</h5>
+                  <h5 class="mb-1">{{ t("common.specifications") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getAttributeInfo).attribute.Specifications.split('||')    ">
                   {{ i }}</p>
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Repeatability</h5>
+                  <h5 class="mb-1">{{ t("common.repeatability") }}</h5>
                 </div>
                 <p class="mb-1">
                   {{ (store.getAttributeInfo).attribute.Repeatability }}
@@ -56,7 +58,7 @@ const rel_type_inv = {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Extensibility</h5>
+                  <h5 class="mb-1">{{ t("common.extensibility") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getAttributeInfo).attribute.Extensibility.split('||') ">
                   {{ i }}
@@ -64,7 +66,7 @@ const rel_type_inv = {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Value schema</h5>
+                  <h5 class="mb-1">{{ t("common.valueSchema") }}</h5>
                 </div>
                 <ul>
                   <li class="nav-item" v-for="i in (store.getAttributeInfo).attribute['Value schema']">
@@ -74,7 +76,7 @@ const rel_type_inv = {
               </div>
               <div class="list-group-item list-group-item-action flex-column align-items-start">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Examples</h5>
+                  <h5 class="mb-1">{{ t("common.examples") }}</h5>
                 </div>
                 <p class="mb-1" v-for="i in (store.getAttributeInfo).attribute['Example'].split('||')    ">
                   {{ i }}
@@ -91,7 +93,7 @@ const rel_type_inv = {
         <div class="list-group">
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Domain/Entities</h5>
+              <h5 class="mb-1">{{ t("attributeCard.domainEntities") }}</h5>
             </div>
             <div class="overflow-auto fullheight">
               <div class="entity-list-wrap">

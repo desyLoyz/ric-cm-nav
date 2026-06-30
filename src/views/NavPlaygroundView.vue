@@ -231,7 +231,7 @@ async function importRiccmnav() {
   importStatus.value = "";
   const file = importFile.value;
   if (!file) {
-    importError.value = "Please select a .riccmnav file.";
+    importError.value = t("playground.pleaseSelectFile");
     return;
   }
   try {
@@ -239,7 +239,7 @@ async function importRiccmnav() {
     const parsed = JSON.parse(raw);
     const graph = parsed?.graph || parsed;
     if (!graph || typeof graph !== "object") {
-      throw new Error("Invalid file format.");
+      throw new Error(t("playground.invalidFileFormat"));
     }
     const nodes = graph.nodes || {};
     const edges = graph.edges || {};
@@ -258,10 +258,12 @@ async function importRiccmnav() {
     attributeTargetNodeId.value = "";
     selectedRelationId.value = "";
     selectedAttributeId.value = "";
-    importStatus.value = "File imported successfully.";
+    importStatus.value = t("playground.importSuccess");
     await ensureGraphVisible();
   } catch (err) {
-    importError.value = `Import failed: ${err?.message || "Invalid .riccmnav file."}`;
+    importError.value = t("playground.importFailed", {
+      message: err?.message || t("playground.invalidFileFormat"),
+    });
   }
 }
 
@@ -400,10 +402,10 @@ const previewCardComponent = computed(() => {
 });
 
 const previewCardTitle = computed(() => {
-  if (previewCardType.value === "relation") return "Relation Card Preview";
-  if (previewCardType.value === "attribute") return "Attribute Card Preview";
-  if (previewCardType.value === "relation-attribute") return "Relation Attribute Card Preview";
-  return "Entity Card Preview";
+  if (previewCardType.value === "relation") return t("playground.previewRelationCardTitle");
+  if (previewCardType.value === "attribute") return t("playground.previewAttributeCardTitle");
+  if (previewCardType.value === "relation-attribute") return t("playground.previewRelationAttributeCardTitle");
+  return t("playground.previewEntityCardTitle");
 });
 
 const entityOptions = computed(() => {
@@ -823,106 +825,105 @@ const graphConfigs = defineConfigs({
 
 <template>
   <div class="playground-page">
-    <h1>Modeling Playground</h1>
+    <h1>{{ t("playground.title") }}</h1>
     <p class="playground-note">
-      Build your own graph: add entity/text nodes, relation edges between entity nodes, and attribute edges to text
-      nodes.
+      {{ t("playground.description") }}
     </p>
     <div class="playground-legend">
-      <span class="legend-item"><span class="legend-dot entity-dot"></span> Entity node</span>
-      <span class="legend-item"><span class="legend-dot text-dot"></span> Text node</span>
-      <span class="legend-item"><span class="legend-line rel-line"></span> Relation edge</span>
-      <span class="legend-item"><span class="legend-line attr-line"></span> Attribute edge</span>
+      <span class="legend-item"><span class="legend-dot entity-dot"></span> {{ t("playground.legendEntityNode") }}</span>
+      <span class="legend-item"><span class="legend-dot text-dot"></span> {{ t("playground.legendTextNode") }}</span>
+      <span class="legend-item"><span class="legend-line rel-line"></span> {{ t("playground.legendRelationEdge") }}</span>
+      <span class="legend-item"><span class="legend-line attr-line"></span> {{ t("playground.legendAttributeEdge") }}</span>
     </div>
 
     <div class="playground-grid">
       <aside class="playground-controls left-nav">
         <div class="left-nav-header">
-          <h5 class="mb-0">Config Options</h5>
+          <h5 class="mb-0">{{ t("playground.configOptions") }}</h5>
         </div>
         <div class="control-group">
-          <label class="form-label">Add Entity Node</label>
+          <label class="form-label">{{ t("playground.addEntityNode") }}</label>
           <div class="control-row">
             <v-select class="control-select" :options="entityOptions" label="label" :reduce="(opt) => opt.value"
-              :searchable="true" :clearable="true" v-model="selectedEntityId" placeholder="Select entity..." />
+              :searchable="true" :clearable="true" v-model="selectedEntityId" :placeholder="t('playground.selectEntityPlaceholder')" />
             <button class="btn btn-sm btn-outline-secondary icon-btn" :disabled="!selectedEntityId"
-              title="Preview selected entity card" @click="openEntityPreview">
+               :title="t('playground.previewSelectedEntityCard')" @click="openEntityPreview">
               <i class="bi bi-info-circle"></i>
             </button>
-            <button class="btn btn-sm btn-outline-primary" @click="addEntityNode">Add</button>
+            <button class="btn btn-sm btn-outline-primary" @click="addEntityNode">{{ t("playground.add") }}</button>
           </div>
         </div>
 
         <div class="control-group">
-          <label class="form-label">Add Text Node</label>
+          <label class="form-label">{{ t("playground.addTextNode") }}</label>
           <div class="control-row">
             <input class="form-control form-control-sm" v-model="textNodeLabel" :placeholder="t('playground.textNodeLabel')" />
-            <button class="btn btn-sm btn-outline-primary" @click="addTextNode">Add</button>
+            <button class="btn btn-sm btn-outline-primary" @click="addTextNode">{{ t("playground.add") }}</button>
           </div>
         </div>
 
         <div class="control-group">
-          <label class="form-label">Add Relation Edge</label>
+          <label class="form-label">{{ t("playground.addRelationEdge") }}</label>
           <div class="stack-row">
             <v-select class="control-select" :options="relationSourceNodeOptions" label="label"
               :reduce="(opt) => opt.value"
               :searchable="true" :clearable="true" v-model="relationSourceNodeId"
-              placeholder="Source entity node..." />
+              :placeholder="t('playground.sourceEntityPlaceholder')" />
             <div class="select-info-row">
               <v-select class="control-select" :options="relationTargetNodeOptions" label="label"
                 :reduce="(opt) => opt.value"
                 :searchable="true" :clearable="true" v-model="relationTargetNodeId"
-                placeholder="Target entity node..." />
+                :placeholder="t('playground.targetEntityPlaceholder')" />
               <button class="btn btn-sm btn-outline-secondary icon-btn"
                 :disabled="!relationSourceNodeId && !relationTargetNodeId"
-                title="Swap source and target entities" @click="swapRelationNodes">
+                 :title="t('playground.swapSourceTargetEntities')" @click="swapRelationNodes">
                 <i class="bi bi-arrow-left-right"></i>
               </button>
             </div>
             <div class="select-info-row">
               <v-select class="control-select" :options="validRelationOptions" label="label"
                 :reduce="(opt) => opt.value" :searchable="true" :clearable="true" v-model="selectedRelationId"
-                placeholder="Select relation..." />
+                :placeholder="t('playground.selectRelationPlaceholder')" />
               <button class="btn btn-sm btn-outline-secondary icon-btn" :disabled="!selectedRelationId"
-                title="Preview selected relation card" @click="openRelationPreview">
+                 :title="t('playground.previewSelectedRelationCard')" @click="openRelationPreview">
                 <i class="bi bi-info-circle"></i>
               </button>
             </div>
-            <button class="btn btn-sm btn-outline-primary" @click="addRelationEdge">Add Relation Edge</button>
+            <button class="btn btn-sm btn-outline-primary" @click="addRelationEdge">{{ t("playground.addRelationEdge") }}</button>
           </div>
         </div>
 
         <div class="control-group">
-          <label class="form-label">Add Attribute Edge</label>
+          <label class="form-label">{{ t("playground.addAttributeEdge") }}</label>
           <div class="stack-row">
             <v-select class="control-select" :options="entityNodeOptions" label="label" :reduce="(opt) => opt.value"
               :searchable="true" :clearable="true" v-model="attributeSourceNodeId"
-              placeholder="Source entity node..." />
+              :placeholder="t('playground.sourceEntityPlaceholder')" />
             <v-select class="control-select" :options="textNodeOptions" label="label" :reduce="(opt) => opt.value"
-              :searchable="true" :clearable="true" v-model="attributeTargetNodeId" placeholder="Target text node..." />
+              :searchable="true" :clearable="true" v-model="attributeTargetNodeId" :placeholder="t('playground.targetTextPlaceholder')" />
             <div class="select-info-row">
               <v-select class="control-select" :options="validAttributeOptions" label="label"
                 :reduce="(opt) => opt.value" :searchable="true" :clearable="true" v-model="selectedAttributeId"
-                placeholder="Select attribute..." />
+                :placeholder="t('playground.selectAttributePlaceholder')" />
               <button class="btn btn-sm btn-outline-secondary icon-btn" :disabled="!selectedAttributeId"
-                title="Preview selected attribute card" @click="openAttributePreview">
+                 :title="t('playground.previewSelectedAttributeCard')" @click="openAttributePreview">
                 <i class="bi bi-info-circle"></i>
               </button>
             </div>
-            <button class="btn btn-sm btn-outline-primary" @click="addAttributeEdge">Add Attribute Edge</button>
+            <button class="btn btn-sm btn-outline-primary" @click="addAttributeEdge">{{ t("playground.addAttributeEdge") }}</button>
           </div>
         </div>
 
         <div class="control-group">
           <div class="action-row">
-            <button class="btn btn-sm btn-outline-danger" @click="clearGraph">Clear Graph</button>
-            <button class="btn btn-sm btn-outline-secondary" @click="openImportModal">Import</button>
-            <button class="btn btn-sm btn-outline-secondary" @click="openExportModal">Export</button>
+            <button class="btn btn-sm btn-outline-danger" @click="clearGraph">{{ t("playground.clearGraph") }}</button>
+            <button class="btn btn-sm btn-outline-secondary" @click="openImportModal">{{ t("playground.import") }}</button>
+            <button class="btn btn-sm btn-outline-secondary" @click="openExportModal">{{ t("playground.export") }}</button>
           </div>
         </div>
 
         <div class="control-group">
-          <h6 class="mb-1">Nodes</h6>
+          <h6 class="mb-1">{{ t("playground.nodes") }}</h6>
           <ul class="side-list">
             <li v-for="node in selectedNodeList" :key="node.id">
               <span>{{ selectedNodeListLabel(node) }}</span>
@@ -932,7 +933,7 @@ const graphConfigs = defineConfigs({
         </div>
 
         <div class="control-group">
-          <h6 class="mb-1">Edges</h6>
+          <h6 class="mb-1">{{ t("playground.edges") }}</h6>
           <ul class="side-list">
             <li v-for="edge in selectedEdgeList" :key="edge.id">
               <span>{{ edge.id }}: {{ edge.label }}</span>
@@ -994,7 +995,7 @@ const graphConfigs = defineConfigs({
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">{{ previewCardTitle }}</h5>
-            <button type="button" class="btn-close" aria-label="Close" @click="closeEntityPreview"></button>
+            <button type="button" class="btn-close" :aria-label="t('common.close')" @click="closeEntityPreview"></button>
           </div>
           <div class="modal-body preview-modal-body">
             <component :is="previewCardComponent" />
@@ -1009,16 +1010,16 @@ const graphConfigs = defineConfigs({
       <div class="modal-dialog modal-sm modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Export Graph</h5>
-            <button type="button" class="btn-close" aria-label="Close" @click="closeExportModal"></button>
+            <h5 class="modal-title">{{ t("playground.exportGraphTitle") }}</h5>
+            <button type="button" class="btn-close" :aria-label="t('common.close')" @click="closeExportModal"></button>
           </div>
           <div class="modal-body">
-            <p class="mb-2">Choose export format:</p>
+            <p class="mb-2">{{ t("playground.chooseExportFormat") }}</p>
             <div class="d-grid gap-2">
-              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsPng">Export as PNG</button>
-              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsJpg">Export as JPG</button>
-              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsSvg">Export as SVG</button>
-              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsRiccmnav">Export as .riccmnav</button>
+              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsPng">{{ t("playground.exportAsPng") }}</button>
+              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsJpg">{{ t("playground.exportAsJpg") }}</button>
+              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsSvg">{{ t("playground.exportAsSvg") }}</button>
+              <button class="btn btn-sm btn-outline-primary" @click="exportGraphAsRiccmnav">{{ t("playground.exportAsRiccmnav") }}</button>
             </div>
           </div>
         </div>
@@ -1031,19 +1032,19 @@ const graphConfigs = defineConfigs({
       <div class="modal-dialog modal-md modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Import .riccmnav</h5>
-            <button type="button" class="btn-close" aria-label="Close" @click="closeImportModal"></button>
+            <h5 class="modal-title">{{ t("playground.importRiccmnavTitle") }}</h5>
+            <button type="button" class="btn-close" :aria-label="t('common.close')" @click="closeImportModal"></button>
           </div>
           <div class="modal-body">
-            <label class="form-label">Select file</label>
+            <label class="form-label">{{ t("playground.selectFile") }}</label>
             <input type="file" class="form-control form-control-sm" accept=".riccmnav,application/json"
               @change="handleImportFileChange" />
             <p v-if="importStatus" class="text-success small mt-2 mb-0">{{ importStatus }}</p>
             <p v-if="importError" class="text-danger small mt-2 mb-0">{{ importError }}</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-secondary" @click="closeImportModal">Close</button>
-            <button type="button" class="btn btn-sm btn-primary" @click="importRiccmnav">Import</button>
+            <button type="button" class="btn btn-sm btn-secondary" @click="closeImportModal">{{ t("common.close") }}</button>
+            <button type="button" class="btn btn-sm btn-primary" @click="importRiccmnav">{{ t("playground.import") }}</button>
           </div>
         </div>
       </div>

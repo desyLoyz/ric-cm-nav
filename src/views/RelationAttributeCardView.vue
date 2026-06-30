@@ -1,7 +1,9 @@
 <script setup>
 import { useMainStore } from '@/stores/store'
+import { useLabels } from '@/composables/useLabels'
 
 const store = useMainStore()
+const { t } = useLabels()
 
 function splitParts(value) {
   return (value || "")
@@ -32,7 +34,7 @@ function schemaParts(value) {
         <div class="list-group">
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Definition</h5>
+              <h5 class="mb-1">{{ t("common.definition") }}</h5>
             </div>
             <p class="mb-1" v-for="i in splitParts((store.getRelattributeInfo).relattribute.Definition)">
               {{ i }}
@@ -41,7 +43,7 @@ function schemaParts(value) {
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Scope Notes</h5>
+              <h5 class="mb-1">{{ t("common.scopeNotes") }}</h5>
             </div>
             <p class="mb-1" v-for="i in splitParts((store.getRelattributeInfo).relattribute['Scope Notes'])">
               {{ i }}
@@ -50,7 +52,7 @@ function schemaParts(value) {
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Specifications</h5>
+              <h5 class="mb-1">{{ t("common.specifications") }}</h5>
             </div>
             <p class="mb-1" v-for="i in splitParts((store.getRelattributeInfo).relattribute.Specifications)">
               {{ i }}
@@ -59,14 +61,14 @@ function schemaParts(value) {
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Repeatability</h5>
+              <h5 class="mb-1">{{ t("common.repeatability") }}</h5>
             </div>
             <p class="mb-1">{{ (store.getRelattributeInfo).relattribute.Repeatability }}</p>
           </div>
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Extensibility</h5>
+              <h5 class="mb-1">{{ t("common.extensibility") }}</h5>
             </div>
             <p class="mb-1" v-for="i in splitParts((store.getRelattributeInfo).relattribute.Extensibility)">
               {{ i }}
@@ -75,7 +77,7 @@ function schemaParts(value) {
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Value Schema</h5>
+              <h5 class="mb-1">{{ t("common.valueSchema") }}</h5>
             </div>
             <ul class="schema-chip-list">
               <li class="schema-chip-item" v-for="schemaPart in schemaParts((store.getRelattributeInfo).relattribute['Value schema'])">
@@ -86,7 +88,7 @@ function schemaParts(value) {
 
           <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Examples</h5>
+              <h5 class="mb-1">{{ t("common.examples") }}</h5>
             </div>
             <p class="mb-1" v-for="i in splitParts((store.getRelattributeInfo).relattribute.Examples)">
               {{ i }}
